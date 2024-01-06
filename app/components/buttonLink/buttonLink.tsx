@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 export default function ButtonLink({ name, link }: { name: string, link: string }) {
-    return <a href={link}>
+    return <Link href={link}>
         <button>{name}</button>
-    </a>
+    </Link>
 }
