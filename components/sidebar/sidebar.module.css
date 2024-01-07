@@ -1,0 +1,11 @@
+.container {
+    width: max-content;
+    background-color: rgb(69, 69, 69);
+    overflow: auto;
+    height: calc(100vh - 50px);
+    min-width: 250px;
+    position: fixed; 
+}
+.container * {
+    width: 100%;
+}

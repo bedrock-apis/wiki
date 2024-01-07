@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
