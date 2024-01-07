@@ -11,7 +11,8 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx']
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    basePath : "/wiki"
 }
 
 export default withMDX(nextConfig)
