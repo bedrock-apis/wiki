@@ -31,8 +31,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "srs/**/*.ts",
+    "srs/**/*.tsx",
     ".next/types/**/*.ts",
     "./dist/types/**/*.ts"
   ],
