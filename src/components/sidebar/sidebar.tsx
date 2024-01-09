@@ -1,5 +1,5 @@
 import { glob } from "glob"
-import style from "./sidebar.module.css"
+import style from "./sidebar.module.css";
 import DropdownMenu from "../dropdownMenu/dropdownMenu"
 import { FileTree } from "./fileTree"
 

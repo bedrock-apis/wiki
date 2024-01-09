@@ -32,7 +32,7 @@ export function FileTree({ rootPath }: { rootPath: string }) {
                         </DropdownMenu>
                     </>
                 ) : (
-                    <ButtonLink link={"/docs/" + file.path.split("mdxPages")[1].split(".mdx")[0]} name={file.name} />
+                    <ButtonLink link={"/docs/" + file.path.split("mdxPages")[1].split(".mdx")[0]} children={file.name} />
                 )}
             </div>
         ));
