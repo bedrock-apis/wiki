@@ -1,3 +1,6 @@
+///FUTURE PROJECT USE MARKDOWNTSX npm
+
+
 export function MarkdownComponent({children}: {children: string}){
     return <>
 
