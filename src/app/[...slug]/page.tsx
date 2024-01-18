@@ -3,18 +3,18 @@ import { MainView } from "@/features/MainView";
 import { GetFilesTree } from "@/features/functions"
 import Markdown from "markdown-to-jsx";
 
-export const generateStaticParams = ()=>{
+export const generateStaticParams = () => {
     const slugs = [];
     for (const filePath of GetFilesTree("./wiki")) {
         const [base, wiki, ...ss] = filePath.split("/");
-        if(ss[ss.length - 1]?.endsWith(".md")){
+        if (ss[ss.length - 1]?.endsWith(".md")) {
             ss[ss.length - 1] = ss[ss.length - 1].substring(0, ss[ss.length - 1].length - 3);
-            slugs.push({slug: [...ss]});
+            slugs.push({ slug: [...ss] });
         }
     }
     return slugs;
 }
-export default function GetMarkdownPageView({params}: any){
+export default function GetMarkdownPageView({ params }: { params: { slug: ReturnType<typeof generateStaticParams> } }) {
     const data = fs.readFileSync("./wiki/" + params.slug.join("/") + ".md");
     return <MainView>
         <Markdown>
