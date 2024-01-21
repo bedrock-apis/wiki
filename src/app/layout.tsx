@@ -1,6 +1,7 @@
 import Header from "@/components/header/header";
 import SideBar from "@/components/aside/aside";
 import "../styles/globals.css";
+import Footer from "@/components/footer/footer";
 
 export const metadata = {
   title: 'Next.js',
@@ -22,9 +23,12 @@ export default function RootLayout({
           <Header />
           <div className="flex">
             <SideBar />
-            <main className="p-5">
-              {children}
-            </main>
+            <div className="w-full">
+              <main className="p-5 min-h-[100vh] mt-10">
+                {children}
+              </main>
+              <Footer />
+            </div>
           </div>
         </div>
       </body>
