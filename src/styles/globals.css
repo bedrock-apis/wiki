@@ -6,6 +6,19 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 145, 145, 145;
   --background-end-rgb: 255, 255, 255;
+
+
+  --primary: #132634;
+  --secondary: #124157;
+  --highlight: #4c8d91;
+  --accent: #bd6e39;
+  --accent-highlight: #C86040;
+
+  --text-primary: #d0e2eb;
+}
+
+*{
+  color: var(--text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
