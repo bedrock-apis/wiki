@@ -24,7 +24,7 @@ export default function RootLayout({
           <div className="flex">
             <SideBar />
             <div className="w-full">
-              <main className="p-5 min-h-[100vh] mt-10">
+              <main className="p-5 min-h-[100vh] mt-10 w-[calc(100vw-240px)]">
                 {children}
               </main>
               <Footer />
