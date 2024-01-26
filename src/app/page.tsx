@@ -1,8 +1,5 @@
-import { MainView } from "@/features/MainView";
+import Card from "@/components/card/card";
 
 export default function Home() {
-    return <MainView>
-        <h1>Some Text</h1>
-        {/* <h1>{"Some Text".repeat(1e4)}</h1> */}
-    </MainView>
+    return <></>
 }
