@@ -14,6 +14,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  basePath : "/wiki",
   distDir: "./dist"
 }
 module.exports = withMDX(nextConfig)
