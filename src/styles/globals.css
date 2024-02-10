@@ -8,13 +8,13 @@
   --background-end-rgb: 255, 255, 255;
 
 
-  --primary: #132634;
-  --secondary: #124157;
-  --highlight: #4c8d91;
-  --accent: #bd6e39;
-  --accent-highlight: #C86040;
+  --primary: #232628;
+  --secondary: #293439;
+  --highlight: #788687;
+  --accent: #987420;
+  --accent-highlight: #f4805d;
 
-  --text-primary: #d0e2eb;
+  --text-primary: #d7dbde;
 }
 
 *{
