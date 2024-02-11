@@ -2,6 +2,7 @@
 import ButtonLink from "@/components/buttonLink/buttonLink";
 import { isMobile } from "@/hooks/useSize";
 import { AnimatePresence, Variants, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
@@ -44,8 +45,10 @@ export default function SideBar(params: { menu: [string, string][] }) {
                     <motion.div variants={container} initial="hidden" animate="visible" className="flex flex-col px-3">
                         {
                             params.menu.map((x, i) => (
-                                <motion.div key={i} variants={item} className="py-0.5 rounded-md hover:bg-primary cursor-pointer">
-                                    <ButtonLink link={"/" + x[1]} className="text-xl m-3">{x[0]}</ButtonLink>
+                                <motion.div key={i} variants={item} className="py-0.5 px-2 mx-1 rounded-md hover:bg-primary cursor-pointer">
+                                    <Link href={"/" + x[1]}>
+                                        <button className="w-full text-left text-xl">{x[0]}</button>
+                                    </Link>
                                 </motion.div>
                             ))
                         }
