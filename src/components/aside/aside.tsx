@@ -43,14 +43,14 @@ export default function SideBar(params: { options: {tags:{[k: string]: {title: s
         const { title, color } = params.options.tags[tag];
         const subComponens = [];
         subComponens.push(
-            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1" style={{"backgroundColor":color??"#ff0000",fontSize:21}}>
+            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5" style={{"backgroundColor":color??"#ff0000",fontSize:22}}>
                 {title}
             </div>
         );
         for (const {title, link} of params.options.menus[tag]) subComponens.push(
-                <motion.div key={"__" + i++} variants={item} className="py-0.5 mx-1 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
+                <motion.div key={"__" + i++} variants={item} className="py-0.5 px-2 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
                     <Link href={"/" + link}>
-                        <button className="w-full text-left text-xl">{title}</button>
+                        <button className="w-full text-left" style={{fontSize: 18}}>{title}</button>
                     </Link>
                 </motion.div>
             )
