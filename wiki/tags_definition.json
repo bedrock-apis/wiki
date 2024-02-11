@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "title":"Examples",
+        "color":"#987420"
+    },
+    "docs": {
+        "title":"Documentation",
+        "color":"#0059b3"
+    }
+}

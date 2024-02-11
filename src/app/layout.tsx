@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import Footer from "@/components/footer/footer";
 import { Metadata } from "next";
 import { LoadThem } from "@/features/getAllTopics";
+import { readFileSync } from "fs";
 
 export const metadata = {
   title: 'Bedrock API Wiki',
@@ -16,6 +17,13 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const [blogs, metadatas] = await LoadThem();
+  const menus = {} as any;
+  const options = {tags: JSON.parse(readFileSync("./wiki/tags_definition.json").toString()), menus};
+  Object.keys(blogs).filter(e=>metadatas[e]?.displayName).forEach(e=>{
+    const {tag="dev", displayName} = metadatas[e]??{};
+    const m = menus[tag] = menus[tag]??[];
+    m.push({title:displayName, link: e});
+  });
   return (
     <html lang="en" className="h-full">
       <head>
@@ -25,12 +33,12 @@ export default async function RootLayout({
         <div className="w-full h-full flex flex-col">
           <Header />
           <div className="flex">
-            <SideBar menu={Object.keys(blogs).filter(e=>metadatas[e]?.displayName).map(e=>[metadatas[e].displayName, e])}/>
+            <SideBar options={options}/>
             <div className="w-full">
-              <main className="p-5 min-h-[100vh] w-full mt-10 break-all">
+              <main className="p-5 min-h-[90vh] w-full mt-10 break-all">
                 {children}
               </main>
-              <Footer />
+            <Footer />
             </div>
           </div>
         </div>

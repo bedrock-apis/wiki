@@ -1,5 +1,6 @@
 ---
 displayName: The MarkdownTest
+tag: dev
 ---
 
 # Markdown
@@ -13,9 +14,3 @@ asd
 - asfasdgfsad
 - adsfasdfasdfas
 - sadfsadf
-
-```js
-import "ů";
-console.warn();
-
-```
