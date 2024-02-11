@@ -16,7 +16,6 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const [blogs, metadatas] = await LoadThem();
-  console.log(metadatas);
   return (
     <html lang="en" className="h-full">
       <head>
