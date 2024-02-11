@@ -5,7 +5,7 @@ import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 
-export default function SideBar(params: {menu: [string, string][]}) {
+export default function SideBar(params: { menu: [string, string][] }) {
     //TODO : Fix Re-Rendering Of Component on Resize With Memo
     //const mobile = isMobile()
 
@@ -32,7 +32,7 @@ export default function SideBar(params: {menu: [string, string][]}) {
     } satisfies Variants;
 
     return <div className="shadow-md">
-        <button className="fixed top-0 left-2 z-40" onClick={() => setExpanded(!expanded)}>
+        <button className="fixed top-2 left-2 z-40" onClick={() => setExpanded(!expanded)}>
             <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
         </button>
         <AnimatePresence>
