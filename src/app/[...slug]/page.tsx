@@ -3,6 +3,7 @@ import { LoadThem, GetWikiPaths } from "@/features/getAllTopics";
 import { Metadata } from "next";
 
 type StaticSlugParams = { params: Awaited<ReturnType<typeof generateStaticParams>>[number] }
+
 export async function generateStaticParams() {
     const slugs = [];
     for (const ss of GetWikiPaths()) {
@@ -16,7 +17,7 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
     const [blogs, metadatas] = await LoadThem();
     const MdxData = blogs[slg.join("/")];
 	return (
-		<div className="m-auto p-4">
+		<div className="m-[1%]">
 			<article>
 				<MdxData />
 			</article>

@@ -16,7 +16,7 @@
   --text-primary: #d7dbde;
 }
 
-*{
+* {
   color: var(--text-primary);
 }
 
@@ -27,7 +27,16 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
 .text-4xl {
-  font-size: 2.25rem/* 36px */;
-  line-height: 2.5rem/* 40px */;
+  font-size: 2.25rem
+    /* 36px */
+  ;
+  line-height: 2.5rem
+    /* 40px */
+  ;
+}
+
+svg path {
+  fill: var(--text-primary)
 }
