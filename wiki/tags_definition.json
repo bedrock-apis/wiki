@@ -1,6 +1,10 @@
 {
     "dev": {
+        "title":"Examples",
+        "color":"#987420"
+    },
+    "docs": {
         "title":"Documentation",
-        "color":"#112188"
+        "color":"#0059b3"
     }
 }

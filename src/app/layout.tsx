@@ -35,10 +35,10 @@ export default async function RootLayout({
           <div className="flex">
             <SideBar options={options}/>
             <div className="w-full">
-              <main className="p-5 min-h-[100vh] w-full mt-10 break-all">
+              <main className="p-5 min-h-[90vh] w-full mt-10 break-all">
                 {children}
               </main>
-              <Footer />
+            <Footer />
             </div>
           </div>
         </div>

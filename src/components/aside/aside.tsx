@@ -41,18 +41,24 @@ export default function SideBar(params: { options: {tags:{[k: string]: {title: s
     for (const tag of Object.keys(params.options.tags)) {
         if(!(tag in params.options.menus)) continue;
         const { title, color } = params.options.tags[tag];
-        arrayComponents.push(
-            <div key={"_" + i++} className="rounded-md shadow-md px-2 my-1 text-xl" style={{"backgroundColor":color??"#ff0000"}}>
+        const subComponens = [];
+        subComponens.push(
+            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1" style={{"backgroundColor":color??"#ff0000",fontSize:21}}>
                 {title}
             </div>
         );
-        for (const {title, link} of params.options.menus[tag]) arrayComponents.push(
-                <motion.div key={"__" + i++} variants={item} className="py-0.5 px-2 mx-1 rounded-md cursor-pointer hover:bg-primary">
+        for (const {title, link} of params.options.menus[tag]) subComponens.push(
+                <motion.div key={"__" + i++} variants={item} className="py-0.5 mx-1 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
                     <Link href={"/" + link}>
                         <button className="w-full text-left text-xl">{title}</button>
                     </Link>
                 </motion.div>
             )
+        arrayComponents.push(
+            <div key={"___" + i++} className="ml-3 mt-5" style={{borderRadius: "0.2rem",backgroundColor:"#00000055"}}>
+                {subComponens}
+            </div>
+        )
     }
 
     return <aside className="shadow-md">
@@ -62,7 +68,7 @@ export default function SideBar(params: { options: {tags:{[k: string]: {title: s
         <AnimatePresence>
             {expanded && <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-60 top-10 h-full min-w-60 float-left">
                 <div className="fixed w-60 top-14 h-full bg-secondary border border-highlight min-w-60 float-left">
-                    <motion.div variants={container} initial="hidden" animate="visible" className="flex my-4 flex-col px-3">
+                    <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
                         {
                             arrayComponents
                         }

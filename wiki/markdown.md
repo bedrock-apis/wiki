@@ -14,9 +14,3 @@ asd
 - asfasdgfsad
 - adsfasdfasdfas
 - sadfsadf
-
-```js
-import "ů";
-console.warn();
-
-```
