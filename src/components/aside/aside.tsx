@@ -45,7 +45,7 @@ export default function SideBar(params: {menu: [string, string][]}) {
                         {
                             params.menu.map((x, i) => (
                                 <motion.div key={i} variants={item} className="py-0.5 rounded-md hover:bg-primary">
-                                    <ButtonLink link={"/" + x[0]} className="text-xl m-3">{x[1]}</ButtonLink>
+                                    <ButtonLink link={"/" + x[1]} className="text-xl m-3">{x[0]}</ButtonLink>
                                 </motion.div>
                             ))
                         }

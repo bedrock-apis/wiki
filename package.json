@@ -2,6 +2,7 @@
   "name": "wiki2",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,7 +18,10 @@
     "next": "^14.0.4",
     "next-mdx-remote": "^4.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-mdx-frontmatter": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,21 +1,20 @@
-import { GetWikiPaths, getAll, blogs } from "@/features/getAllTopics";
+import { RemoveSuffix } from "@/features/functions";
+import { LoadThem, GetWikiPaths } from "@/features/getAllTopics";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
 
 type StaticSlugParams = { params: Awaited<ReturnType<typeof generateStaticParams>>[number] }
 export async function generateStaticParams() {
     const slugs = [];
     for (const ss of GetWikiPaths()) {
-        if (ss[ss.length - 1]?.endsWith(".mdx")) {
-            ss[ss.length - 1] = ss[ss.length - 1].substring(0, ss[ss.length - 1].length - 4);
-            slugs.push({ slug: [...ss] });
-        }
+        ss[ss.length - 1] = RemoveSuffix(ss[ss.length - 1]);
+        slugs.push({ slug: [...ss] });
     }
     return slugs;
 }
 export default async function GetMarkdownPageView({ params }: StaticSlugParams) {
     const slg = params.slug;
-    const MdxData = blogs[slg.join("/") + ".mdx"];
+    const [blogs, metadatas] = await LoadThem();
+    const MdxData = blogs[slg.join("/")];
 	return (
 		<div className="mx-auto p-4">
 			<article>
