@@ -3,18 +3,20 @@ import SideBar from "@/components/aside/aside";
 import "../styles/globals.css";
 import Footer from "@/components/footer/footer";
 import { Metadata } from "next";
-import { blogs } from "@/features/getAllTopics";
+import { LoadThem } from "@/features/getAllTopics";
 
 export const metadata = {
   title: 'Bedrock API Wiki',
   description: 'A Place To Share Minecraft Bedrock Knowlage ✨',
 } satisfies Metadata
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [blogs, metadatas] = await LoadThem();
+  console.log(metadatas);
   return (
     <html lang="en" className="h-full">
       <head>
@@ -24,7 +26,7 @@ export default function RootLayout({
         <div className="w-full h-full flex flex-col">
           <Header />
           <div className="flex">
-            <SideBar menu={Object.keys(blogs).map(e=>[e.substring(0,e.length-4), e])}/>
+            <SideBar menu={Object.keys(blogs).filter(e=>metadatas[e]?.displayName).map(e=>[metadatas[e].displayName, e])}/>
             <div className="w-full">
               <main className="p-5 min-h-[100vh] w-full mt-10 break-all">
                 {children}

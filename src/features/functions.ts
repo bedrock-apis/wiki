@@ -6,3 +6,7 @@ export function* GetFilesTree(base: string): Generator<string, void> {
         else yield base + "/" + info.name;
     }
 }
+export function RemoveSuffix(fileName: string) {
+    const spl = fileName.split(".");
+    return fileName.substring(0,fileName.length - spl[spl.length-1].length - 1);
+}

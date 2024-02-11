@@ -1,9 +1,12 @@
-//const remarkGfm = require("remark-gfm");
+import w from "@next/mdx";
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 
-const withMDX = require('@next/mdx')({
+
+const withMDX = w({
   extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter,[remarkMdxFrontmatter, {name:'metadata'}]],
     rehypePlugins: [],
   },
 })
@@ -16,6 +19,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  basePath: "/wiki",
   distDir: "./dist"
 }
-module.exports = withMDX(nextConfig)
+export default withMDX(nextConfig)

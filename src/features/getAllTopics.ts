@@ -1,20 +1,26 @@
-import dynamic from "next/dynamic";
-import { GetFilesTree } from "./functions";
+import { GetFilesTree, RemoveSuffix } from "./functions";
 import { ComponentType } from "react";
 
-export const blogs: {[k: string]: ComponentType<{}>} = {};
-for (const [ss, component] of getAll()) blogs[ss.join("/")] = component;
-export function* getAll(){
+export async function LoadThem(){
+    const metadatas: {[k: string]: any} = {};
+    const obj: {[k: string]: ComponentType<{}>} = {};
     for (const ss of GetWikiPaths()) {
-        if (ss[ss.length - 1]?.endsWith(".mdx")) {
-            yield [ss, dynamic(()=>import("../../wiki/" + ss.join("/")))] as [string[], ComponentType];
+        const fileName = ss[ss.length - 1];
+        if (!fileName?.startsWith("__")) {
+            const j = ss.join("/");
+            const m = await import("../../wiki/" + j);
+            const k = RemoveSuffix(j);
+            obj[k] = m.default;
+            metadatas[k] = m.metadata;
         }
     }
+    return [obj, metadatas];
 }
 export function * GetWikiPaths(){
     for (const filePath of GetFilesTree("./wiki")) {
         const [base, wiki, ...ss] = filePath.split("/");
-        if (ss[ss.length - 1]?.endsWith(".mdx")) {
+        const fileName = ss[ss.length - 1];
+        if ((fileName?.endsWith(".md") || fileName?.endsWith(".mdx"))) {
             yield ss;
         }
     }
