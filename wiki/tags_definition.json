@@ -6,5 +6,9 @@
     "docs": {
         "title":"Documentation",
         "color":"#0059b3"
+    },
+    "guide":{
+        "title":"Guides",
+        "color":"#004d00"
     }
 }
