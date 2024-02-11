@@ -9,7 +9,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 
 export function MHeader({children}: {children?: any}){
-	return <h1 className="text-4xl">{children}</h1>;
+	return <div>
+		<h1 style={{fontSize: 50}}>{children}</h1>
+		<div className="bg-text-primary h-1 opacity-50 mb-5"></div>
+	</div>
 }
 export function MCodeBlock({children}: {children?: any}){
 	return (

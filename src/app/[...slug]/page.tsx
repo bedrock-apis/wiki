@@ -17,7 +17,7 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
     const [blogs, metadatas] = await LoadThem();
     const MdxData = blogs[slg.join("/")];
 	return (
-		<div className="m-auto p-4">
+		<div className="m-[1%]">
 			<article>
 				<MdxData />
 			</article>
