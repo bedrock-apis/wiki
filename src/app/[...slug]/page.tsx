@@ -3,6 +3,7 @@ import { LoadThem, GetWikiPaths } from "@/features/getAllTopics";
 import { Metadata } from "next";
 
 type StaticSlugParams = { params: Awaited<ReturnType<typeof generateStaticParams>>[number] }
+
 export async function generateStaticParams() {
     const slugs = [];
     for (const ss of GetWikiPaths()) {
