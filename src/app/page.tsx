@@ -1,5 +1,5 @@
-import Card from "@/components/card/card";
+import HomePage from "../../wiki/home_page.mdx";
 
-export default function Home() {
-    return <></>
+export default function Home(){
+    return <HomePage/>
 }

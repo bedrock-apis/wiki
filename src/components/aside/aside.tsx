@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import ButtonLink from "@/components/buttonLink/buttonLink";
 import { isMobile } from "@/hooks/useSize";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 
-export default function SideBar() {
+export default function SideBar(params: {menu: [string, string][]}) {
     //TODO : Fix Re-Rendering Of Component on Resize With Memo
     //const mobile = isMobile()
 
@@ -43,9 +43,9 @@ export default function SideBar() {
                     </div>
                     <motion.div variants={container} initial="hidden" animate="visible" className="flex flex-col px-3">
                         {
-                            [0, 1, 2, 3].map(x => (
-                                <motion.div key={x} variants={item}>
-                                    <ButtonLink link={"markdown"}>Test</ButtonLink>
+                            params.menu.map((x, i) => (
+                                <motion.div key={i} variants={item} className="py-0.5 rounded-md hover:bg-primary">
+                                    <ButtonLink link={"/" + x[0]} className="text-xl m-3">{x[1]}</ButtonLink>
                                 </motion.div>
                             ))
                         }
