@@ -3,6 +3,7 @@ import SideBar from "@/components/aside/aside";
 import "../styles/globals.css";
 import Footer from "@/components/footer/footer";
 import { Metadata } from "next";
+import { blogs } from "@/features/getAllTopics";
 
 export const metadata = {
   title: 'Bedrock API Wiki',
@@ -23,7 +24,7 @@ export default function RootLayout({
         <div className="w-full h-full flex flex-col">
           <Header />
           <div className="flex">
-            <SideBar />
+            <SideBar menu={Object.keys(blogs).map(e=>[e.substring(0,e.length-4), e])}/>
             <div className="w-full">
               <main className="p-5 min-h-[100vh] w-full mt-10 break-all">
                 {children}
