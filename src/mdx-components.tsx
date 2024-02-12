@@ -24,7 +24,7 @@ let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub -mt-1 h-[2px] mx-1 mb-2" /> : undefined}
+		{underLine ? <div className="bg-sub -mt-1 h-1 mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
