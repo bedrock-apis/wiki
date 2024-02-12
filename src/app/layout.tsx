@@ -1,6 +1,7 @@
 import Header from "@/components/header/header";
 import SideBar from "@/components/aside/aside";
 import "../styles/globals.css";
+import "../styles/codelights.css";
 import Footer from "@/components/footer/footer";
 import { Metadata } from "next";
 import { LoadThem } from "@/features/getAllTopics";
