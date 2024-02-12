@@ -13,7 +13,6 @@ export default function SideBar(params: { options: {tags:{[k: string]: {title: s
     const [expanded, setExpanded] = useState(true)
 
 
-
     const container = {
         hidden: { opacity: 1, scale: 0 },
         visible: {

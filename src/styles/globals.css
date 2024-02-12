@@ -40,3 +40,9 @@
 svg path {
   fill: var(--text-primary)
 }
+@layer base {
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
