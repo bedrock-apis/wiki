@@ -18,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		pre: PreCode,
 		table: Table,
 		blockquote: BlockQuote,
-		hr: ({children}: {children?: any})=>(<hr className="border-sub border-t-2">{children}</hr>),
+		hr: ({children}: {children?: any})=>(<hr className="border-sub border-t-2 my-1">{children}</hr>),
 		...components,
 	};
 }
@@ -26,7 +26,7 @@ let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub -mt-1 h-[2.5px] mx-1 mb-2" /> : undefined}
+		{underLine ? <hr className="border-sub -mt-2 border-t-[2.5px] mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -65,7 +65,7 @@ export function PreCode(params: any) {
 				params.className in languageToTextMap?
 				<>
 					<p className="text-xl m-1">{languageToTextMap[params.className]}</p>
-					<div className="bg-sub h-[1.5px] mx-1 mb-2 rounded-sm" />
+					<div className="bg-sub h-[1px] mb-2.5 rounded-sm" />
 				</>
 				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
 			}
