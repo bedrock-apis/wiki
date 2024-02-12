@@ -24,7 +24,7 @@ let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub h-[1px] mx-1 mb-2" /> : undefined}
+		{underLine ? <div className="bg-sub h-1 mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -63,7 +63,7 @@ export function PreCode(params: any) {
 	return (
 		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
 			<p className="text-xl m-1">{languageToTextMap[params.className] || params.className}</p>
-			<div className="bg-sub h-[1px] mx-1 mb-2" />
+			<div className="bg-sub h-[2px] mx-1 mb-2" />
 			<div className="px-1">
 				{params.children}
 			</div>
