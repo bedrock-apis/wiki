@@ -20,7 +20,8 @@ const config: Config = {
         "highlight": "var(--highlight)",
         "accent": "var(--accent)",
         "accent-highlight": "var(--accent-highlight)",
-        "text-primary": "var(--text-primary)"
+        "text-primary": "var(--text-primary)",
+        "sub": "var(--sub)"
       }
     },
   },

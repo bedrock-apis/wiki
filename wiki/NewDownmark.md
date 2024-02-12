@@ -22,13 +22,22 @@ Paragraph **Bolt** *italic* [Link](/markdown)?
     - sList2
 
 Text
-  ```js
+  ```javascript
   import * as mc from "@minecraft/server";
   
   console.log("test");
   // The Comment
   ```
 
+```md
+## Header
+Text
+- More
+```
+The test
+```cpp
+- More
+```
 > Lmaoe?
 
 ![[]](sidebar.png)
