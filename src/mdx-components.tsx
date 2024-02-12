@@ -1,8 +1,9 @@
+import { readFileSync } from "fs";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-	const p = {
+	return {
 		h1: Headers(50, true),
 		h2: Headers(34),
 		h3: Headers(28),
@@ -16,15 +17,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		img: Image,
 		pre: PreCode,
 		table: Table,
+		blockquote: BlockQuote,
+		hr: ({children}: {children?: any})=>(<hr className="border-sub border-t-2 my-1">{children}</hr>),
 		...components,
 	};
-	return p;
 }
 let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub -mt-1 h-[2px] mx-1 mb-2"/> : undefined}
+		{underLine ? <hr className="border-sub -mt-2 border-t-[2.5px] mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -42,34 +44,32 @@ function Li({ children, kind }: { children?: any, kind?: string }) { //•▪●
 		{children}
 	</li>
 }
-function Ul(params: any) {
-	//console.log(params);
-	return <ul className="px-4">
-		{params.children.map((e: any) => typeof e.type === "function" ? (e.type({ children: e.props.children, kind: "-" })) : e)}
-	</ul>
-}
 export function Summary({ children, color }: { children?: any, color?: string }) {
 	return <div className="border bg-black bg-opacity-20 rounded-sm px-2 py-1">
 		{children}
 	</div>
 }
+export const multilineCodeBlocks = new WeakSet();
 export function Code(params: any) {
-	return <code className="bg-opacity-0">
+	if(multilineCodeBlocks.has(params)) 
+	return <code >
 		{params.children}
 	</code>
+	else return <code className="bg-black bg-opacity-20 px-1 py-0.5 text-indigo-500 text-sm rounded-[0.2rem]">{params.children}</code>
 }
 export function PreCode(params: any) {
+	multilineCodeBlocks.add(params.children.props);
 	return (
-		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
+		<pre className="border my-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
 			{
 				params.className in languageToTextMap?
 				<>
 					<p className="text-xl m-1">{languageToTextMap[params.className]}</p>
-					<div className="bg-sub h-[1px] mx-1 mb-2 rounded-sm" />
+					<div className="bg-sub h-[1px] mb-2.5 rounded-sm" />
 				</>
 				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
 			}
-			<div className="px-1">
+			<div className="pl-1 pr-4">
 				{params.children}
 			</div>
 		</pre>
@@ -83,17 +83,9 @@ export function Table(params: any) {
 		{params.children}
 	</table>
 }
-
-const languageToTextMap = {
-	"language-js": "JavaScript",
-	"language-javascript": "JavaScript",
-	"language-ts": "TypeScript",
-	"language-typescript": "TypeScript",
-	"language-json": "JSON",
-	"language-md": "Markdown",
-	"language-markdown": "Markdown",
-	"language-cpp": "C++",
-	"language-c": "C",
-	"language-h": "C",
-	"language-hpp": "C",
-} as { [key: string]: any }
+export function BlockQuote(params: any){
+	return <div className="pl-3 pr-2 py-0.5 border-l-[0.35rem] border-gray-400 border-opacity-40 bg-black bg-opacity-20 rounded-[0.1rem]">
+		{params.children}
+	</div>
+}
+const languageToTextMap = JSON.parse(readFileSync("./wiki/language-maps.json").toString()) as { [key: string]: any }
