@@ -24,7 +24,7 @@ let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-text-primary h-1 opacity-50 mb-5" /> : undefined}
+		{underLine ? <div className="bg-sub h-[1px] mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -37,7 +37,7 @@ function A({ children, href }: { children?: any, href?: string }) {
 		{children}
 	</Link>
 }
-function Li({children, kind}:{children?: any, kind?: string}){ //•▪●○►○●□■
+function Li({ children, kind }: { children?: any, kind?: string }) { //•▪●○►○●□■
 	return <li key={"____" + i++} className="ml-5 pb-1.5">
 		{children}
 	</li>
@@ -63,7 +63,7 @@ export function PreCode(params: any) {
 	return (
 		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
 			<p className="text-xl m-1">{languageToTextMap[params.className] || params.className}</p>
-			<div className="bg-text-primary h-[1px] mx-1 mb-2 opacity-30"></div>
+			<div className="bg-sub h-[1px] mx-1 mb-2" />
 			{params.children}
 		</pre>
 	)
@@ -71,7 +71,7 @@ export function PreCode(params: any) {
 export function Image(params: any) {
 	return <img className="m-3 rounded-sm max-h-[25rem] max-w-full" src={"resources/" + params.src} alt="logo" />
 }
-export function Table(params: any){
+export function Table(params: any) {
 	return <table className="m-1 bg-black bg-opacity-5 rounded-[0.3rem]">
 		{params.children}
 	</table>
