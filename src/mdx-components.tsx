@@ -24,7 +24,7 @@ let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub h-1 mx-1 mb-2" /> : undefined}
+		{underLine ? <div className="bg-sub -mt-1 h-[2px] mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -59,11 +59,16 @@ export function Code(params: any) {
 	</code>
 }
 export function PreCode(params: any) {
-
 	return (
 		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
-			<p className="text-xl m-1">{languageToTextMap[params.className] || params.className}</p>
-			<div className="bg-sub h-[2px] mx-1 mb-2" />
+			{
+				params.className in languageToTextMap?
+				<>
+					<p className="text-xl m-1">{languageToTextMap[params.className]}</p>
+					<div className="bg-sub h-[2px] mx-1 mb-2 rounded-sm" />
+				</>
+				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
+			}
 			<div className="px-1">
 				{params.children}
 			</div>
@@ -84,5 +89,11 @@ const languageToTextMap = {
 	"language-javascript": "JavaScript",
 	"language-ts": "TypeScript",
 	"language-typescript": "TypeScript",
-	"language-json": "JSON"
+	"language-json": "JSON",
+	"language-md": "Markdown",
+	"language-markdown": "Markdown",
+	"language-cpp": "C++",
+	"language-c": "C",
+	"language-h": "C",
+	"language-hpp": "C",
 } as { [key: string]: any }
