@@ -70,7 +70,7 @@ export function PreCode(params: any) {
 				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
 			}
 			<div className="pl-1 pr-4">
-				{params.children}
+				{params.children} 
 			</div>
 		</pre>
 	)
