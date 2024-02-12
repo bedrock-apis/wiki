@@ -64,7 +64,9 @@ export function PreCode(params: any) {
 		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
 			<p className="text-xl m-1">{languageToTextMap[params.className] || params.className}</p>
 			<div className="bg-sub h-[1px] mx-1 mb-2" />
-			{params.children}
+			<div className="px-1">
+				{params.children}
+			</div>
 		</pre>
 	)
 }
