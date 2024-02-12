@@ -62,8 +62,8 @@ export function PreCode(params: any) {
 
 	return (
 		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
-			{languageToTextMap[params.className] || params.className}
-			<div className="bg-text-primary h-1 opacity-50"></div>
+			<p className="text-xl m-1">{languageToTextMap[params.className] || params.className}</p>
+			<div className="bg-text-primary h-[1px] mx-1 mb-2 opacity-30"></div>
 			{params.children}
 		</pre>
 	)
@@ -79,5 +79,8 @@ export function Table(params: any){
 
 const languageToTextMap = {
 	"language-js": "JavaScript",
+	"language-javascript": "JavaScript",
+	"language-ts": "TypeScript",
+	"language-typescript": "TypeScript",
 	"language-json": "JSON"
 } as { [key: string]: any }
