@@ -2,7 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-	const p = {
+	return {
 		h1: Headers(50, true),
 		h2: Headers(34),
 		h3: Headers(28),
@@ -16,15 +16,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		img: Image,
 		pre: PreCode,
 		table: Table,
+		blockquote: BlockQuote,
+		hr: ({children}: {children?: any})=>(<hr className="border-sub border-t-2">{children}</hr>),
 		...components,
 	};
-	return p;
 }
 let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div>
 		<h1 style={{ fontSize }}>{children}</h1>
-		{underLine ? <div className="bg-sub -mt-1 h-1 mx-1 mb-2" /> : undefined}
+		{underLine ? <div className="bg-sub -mt-1 h-[2.5px] mx-1 mb-2" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
@@ -60,7 +61,7 @@ export function Code(params: any) {
 }
 export function PreCode(params: any) {
 	return (
-		<pre className="border m-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
+		<pre className="border my-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1" style={{ border: "1px solid rgba(150, 160, 170, 0.2)" }}>
 			{
 				params.className in languageToTextMap?
 				<>
@@ -83,7 +84,12 @@ export function Table(params: any) {
 		{params.children}
 	</table>
 }
-
+export function BlockQuote(params: any){
+	//console.log(params);
+	return <div className="pl-3 border-l-[0.35rem] border-gray-400 border-opacity-40 bg-black bg-opacity-20 rounded-[0.1rem]">
+		{params.children}
+	</div>
+}
 const languageToTextMap = {
 	"language-js": "JavaScript",
 	"language-javascript": "JavaScript",
