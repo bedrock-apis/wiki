@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "init": "npm i",
+    "dev": "npx next dev",
+    "build": "npx next build",
+    "start": "npx next start",
+    "lint": "npx next lint"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
@@ -15,7 +16,6 @@
     "@next/mdx": "^14.1.0",
     "@types/mdx": "^2.0.10",
     "framer-motion": "^10.17.9",
-    "mdx-prism": "^0.3.4",
     "next": "^14.0.4",
     "next-mdx-remote": "^4.4.1",
     "react": "^18",
