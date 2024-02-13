@@ -25,7 +25,7 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
     const MdxData = blogs[slg.join("/")];
     return (
         <div className="m-[1%] flex">
-            <article>
+            <article className="w-full">
                 <MdxData />
             </article>
             {/* <div className="border-opacity-20 my-10 border-gray-400 border-l-2 ml-[2%] float-right min-w-40 max-w-60 w-[40%]" style={{visibility:isMobile()?"hidden":"visible"}}></div> */}

@@ -6,7 +6,7 @@ export default function BaseView(data: { children: any[] | any, sideBarOptions: 
   return <div className="w-full sm:flex">
     <SideBar options={data.sideBarOptions} />
     <div className="w-full overflow-y-auto">
-      <main className="min-h-[calc(100vh-8.5rem)] p-[calc(1%+0.5rem)] w-full mt-[3.5rem] break-all">
+      <main className="min-h-[calc(100vh-8.5rem)] p-[calc(1%+0.5rem)] w-full mt-[3.5rem]">
         {data.children}
       </main>
       <Footer />
