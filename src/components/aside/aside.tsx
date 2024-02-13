@@ -70,7 +70,7 @@ export default function SideBar(params: { options: SideBarOptions}) {
         <AnimatePresence>
             {expanded && 
                 <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] top-10 h-full float-left">
-                    <div className="fixed top-14 h-full border-t-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-secondary float-left">
+                    <div className="fixed top-14 h-[calc(100%-50px)] overflow-y-auto border-t-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-secondary float-left">
                         <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
                             {
                                 arrayComponents
