@@ -1,6 +1,7 @@
-import { readFileSync } from "fs";
+import { existsSync, readFileSync, statfsSync } from "fs";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { resolve } from "path";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
@@ -74,6 +75,8 @@ export function PreCode(params: any) {
 	)
 }
 export function Image(params: any) {
+	const src = params.src??"";
+	if(!src.startsWith("http")) statfsSync(resolve("./public/resources/", src));
 	return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={"resources/" + params.src} alt="logo" />
 }
 
