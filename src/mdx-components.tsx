@@ -52,7 +52,7 @@ export const multilineCodeBlocks = new WeakSet();
 export function Code(params: any) {
 	if(multilineCodeBlocks.has(params)) 
 	return <div>
-		{"Test"}{"Ahasdlfajsdfkjasdl fjsdkaj flkasdjflkasjdflkjsdlkf jaslkdjflksadjflkasjdflkjsadlkfjsldakfj laskdoj"}
+		{params.children}
 	</div>
 	else return <code className="bg-black bg-opacity-20 px-1 py-0.5 text-indigo-500 text-sm rounded-[0.2rem]">{params.children}</code>
 }
