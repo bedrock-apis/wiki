@@ -1,11 +1,12 @@
-import Header from "@/components/header/header";
+import Header from "@/components/header";
 import SideBar from "@/components/aside/aside";
 import "../styles/globals.css";
 import "../styles/codelights.css";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer";
 import { Metadata } from "next";
 import { LoadThem } from "@/features/getAllTopics";
 import { readFileSync } from "fs";
+import BaseView from "@/components/BaseView";
 
 export const metadata = {
   title: 'Bedrock API Wiki',
@@ -33,15 +34,9 @@ export default async function RootLayout({
       <body className="h-full bg-primary">
         <div className="w-full h-full flex flex-col">
           <Header />
-          <div className="flex">
-            <SideBar options={options}/>
-            <div className="w-full">
-              <main className="min-h-[calc(100vh-8.5rem)] p-[calc(1%+0.5rem)] w-full mt-[3.5rem] break-all">
-                {children}
-              </main>
-            <Footer />
-            </div>
-          </div>
+          <BaseView sideBarOptions={options}>
+            {children}
+          </BaseView>
         </div>
       </body>
     </html>

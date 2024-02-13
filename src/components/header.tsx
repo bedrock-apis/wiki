@@ -1,4 +1,4 @@
-import ButtonLink from "../buttonLink/buttonLink"
+import ButtonLink from "./buttonLink/buttonLink"
 
 export default function Header() {
     return <header className="w-full">
