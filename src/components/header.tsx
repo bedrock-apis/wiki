@@ -1,14 +1,18 @@
+"use client";
 import ButtonLink from "./buttonLink/buttonLink"
 
 export default function Header() {
     return <header className="w-full z-40">
-        <div className="fixed bg-secondary border border-highlight h-[3.5rem] w-full shadow-xl">
+        <div className="fixed bg-secondary border border-l-0 border-t-0 border-b-1 border-highlight h-[3.5rem] w-full shadow-xl">
             <div className="m-3 h-min w-full flex">
-                <ButtonLink link="/" className="ml-[3rem] float-left text-2xl w-min font-bold text-nowrap">
+                <button className="-my-2 px-1 rounded-md hover:bg-slate-100 hover:bg-opacity-[0.02]" onClick={()=>(window as any).__sidebar("Test")}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="45" viewBox="0 -960 960 960" width="45"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
+                </button>
+                <ButtonLink link="/" className="float-left text-2xl ml-2 w-min font-bold text-nowrap">
                     Scripting Wiki
                 </ButtonLink>
                 <div className="w-full mr-[3%]">
-                    <HyperLink link="https://github.com/bedrock-apis/wiki" content="Bedrock Wiki"/>
+                    <HyperLink link="https://wiki.bedrock.dev/" content="Bedrock Wiki"/>
                     <HyperLink link="https://github.com/bedrock-apis/wiki" content="Github"/>
                     <HyperLink link="https://discord.gg/38M6A2RvKk" content="Discord"/>
                 </div>
