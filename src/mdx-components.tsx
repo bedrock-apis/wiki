@@ -29,12 +29,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div className="my-2">
-		<h1  style={{ fontSize }}>{children}</h1>
+		<h1 className="break-normal" style={{ fontSize }}>{children}</h1>
 		{underLine ? <hr className="border-sub -mt-2 border-t-[2.5px] mx-1" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
-	return <p className="my-0.5">
+	return <p className="my-0.5 break-normal">
 		{children}
 	</p>
 }
