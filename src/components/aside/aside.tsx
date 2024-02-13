@@ -6,12 +6,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
-export default function SideBar(params: { options: {tags:{[k: string]: {title: string, color?: string}}, menus:{[k: string]: {title:string, link: string}[]}}}) {
+export interface SideBarOptions {
+    tags: { [k: string]: { title: string, color?: string } }
+    menus:  {[k: string]: { title:string, link: string }[]}
+}
+export default function SideBar(params: { options: SideBarOptions}) {
     //TODO : Fix Re-Rendering Of Component on Resize With Memo
     //const mobile = isMobile()
 
     const [expanded, setExpanded] = useState(true)
-
 
     const container = {
         hidden: { opacity: 1, scale: 0 },
@@ -60,20 +63,22 @@ export default function SideBar(params: { options: {tags:{[k: string]: {title: s
         )
     }
 
-    return <aside className="shadow-md ">
+    return <aside className="shadow-md">
         <button className="fixed top-2 left-2 z-40" onClick={() => setExpanded(!expanded)}>
             <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
         </button>
         <AnimatePresence>
-            {expanded && <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-60 top-10 h-full min-w-60 float-left">
-                <div className="fixed w-60 top-14 h-full border-t-0 border border-highlight bg-secondary min-w-60 float-left">
-                    <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
-                        {
-                            arrayComponents
-                        }
-                    </motion.div>
-                </div>
-            </motion.aside>}
+            {expanded && 
+                <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] top-10 h-full float-left">
+                    <div className="fixed top-14 h-full border-t-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-secondary float-left">
+                        <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
+                            {
+                                arrayComponents
+                            }
+                        </motion.div>
+                    </div>
+                </motion.aside>
+            }
         </AnimatePresence>
     </aside>;
 }
