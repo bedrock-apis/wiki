@@ -8,9 +8,12 @@ export function useSize(): [innerWidth: number, innerHeight: number] {
         function handleResize() {
             setInnerWindow([window.innerWidth, window.innerHeight])
         }
-
+        window.addEventListener('load', handleResize);
         window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("load", handleResize);
+        }
     }, [])
 
     return innerWindow
