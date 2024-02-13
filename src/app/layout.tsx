@@ -7,10 +7,17 @@ import { Metadata } from "next";
 import { LoadThem } from "@/features/getAllTopics";
 import { readFileSync } from "fs";
 import BaseView from "@/components/BaseView";
+import { URL } from "url";
 
 export const metadata = {
   title: 'Bedrock API Wiki',
-  description: 'A Place To Share Minecraft Bedrock Knowlage ✨',
+  metadataBase: new URL("https://bedrock-apis.github.io/wiki"),
+  openGraph:{
+    siteName: "Bedrock APIs",
+    title:"Bedrock APIs Wiki",
+    authors: ["conmaster", "dingsel", "test"],
+    description: 'A Place To Share Minecraft Bedrock Knowlage ✨'
+  }
 } satisfies Metadata
 
 export default async function RootLayout({
@@ -29,7 +36,6 @@ export default async function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <title>Wiki</title>
       </head>
       <body className="h-full bg-primary">
         <div className="w-full h-full flex flex-col">
