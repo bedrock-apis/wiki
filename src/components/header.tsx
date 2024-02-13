@@ -1,16 +1,27 @@
+"use client";
 import ButtonLink from "./buttonLink/buttonLink"
 
 export default function Header() {
     return <header className="w-full z-40">
-        <div className="fixed bg-secondary border border-highlight h-[3.5rem] w-full items-center shadow-xl">
-            <div className="ml-[3.25rem] h-full">
-                <ButtonLink link="/" className="my-2.5 text-2xl w-min inline font-bold text-nowrap float-left align-middle">
+        <div className="fixed bg-secondary border border-l-0 border-t-0 border-b-1 border-highlight h-[3.5rem] w-full shadow-xl">
+            <div className="m-3 h-min w-full flex">
+                <button className="-my-2 px-1 rounded-md hover:bg-slate-100 hover:bg-opacity-[0.02]" onClick={()=>(window as any).__sidebar("Test")}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="45" viewBox="0 -960 960 960" width="45"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
+                </button>
+                <ButtonLink link="/" className="float-left text-2xl ml-2 w-min font-bold text-nowrap">
                     Scripting Wiki
                 </ButtonLink>
-                <ButtonLink link="/" className="mr-3 my-3 text-xl w-min inline font-bold text-nowrap float-right align-middle">
-                    API Types
-                </ButtonLink>
+                <div className="w-full mr-[3%]">
+                    <HyperLink link="https://wiki.bedrock.dev/" content="Bedrock Wiki"/>
+                    <HyperLink link="https://github.com/bedrock-apis/wiki" content="Github"/>
+                    <HyperLink link="https://discord.gg/38M6A2RvKk" content="Discord"/>
+                </div>
             </div>
         </div>
     </header>
+}
+export function HyperLink(data: {children?: any, link?: string, content?: string}){
+    return <a href={data.link} target="_blank" className="rounded-md px-2 float-right hover:bg-slate-600 hover:bg-opacity-20 text-xl opacity-80 hover:opacity-95 inline text-nowrap">
+        {data.children??data.content}
+    </a>
 }
