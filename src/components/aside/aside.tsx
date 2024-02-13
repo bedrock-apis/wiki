@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 
 export interface SideBarOptions {
     tags: { [k: string]: { title: string, color?: string } }
-    menus:  {[k: string]: { title:string, link: string }[]}
+    menus: { [k: string]: { title: string, link: string }[] }
 }
-export default function SideBar(params: { options: SideBarOptions}) {
+export default function SideBar(params: { options: SideBarOptions }) {
     //TODO : Fix Re-Rendering Of Component on Resize With Memo
     //const mobile = isMobile()
 
@@ -41,44 +41,46 @@ export default function SideBar(params: { options: SideBarOptions}) {
     const arrayComponents = [];
     let i = 0;
     for (const tag of Object.keys(params.options.tags)) {
-        if(!(tag in params.options.menus)) continue;
+        if (!(tag in params.options.menus)) continue;
         const { title, color } = params.options.tags[tag];
         const subComponens = [];
         subComponens.push(
-            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5" style={{"backgroundColor":color??"#ff0000",fontSize:22}}>
+            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5" style={{ "backgroundColor": color ?? "#ff0000", fontSize: 22 }}>
                 {title}
             </div>
         );
-        for (const {title, link} of params.options.menus[tag]) subComponens.push(
-                <motion.div key={"__" + i++} variants={item} className="py-0.5 px-2 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
-                    <Link href={"/" + link}>
-                        <button className="w-full text-left" style={{fontSize: 18}}>{title}</button>
-                    </Link>
-                </motion.div>
-            )
+        for (const { title, link } of params.options.menus[tag]) subComponens.push(
+            <motion.div key={"__" + i++} variants={item} className="py-0.5 px-2 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
+                <Link href={"/" + link}>
+                    <button className="w-full text-left" style={{ fontSize: 18 }}>{title}</button>
+                </Link>
+            </motion.div>
+        )
         arrayComponents.push(
-            <div key={"___" + i++} className="ml-3 mt-5" style={{borderRadius: "0.2rem",backgroundColor:"#00000055"}}>
+            <div key={"___" + i++} className="ml-3 mt-5" style={{ borderRadius: "0.2rem", backgroundColor: "#00000055" }}>
                 {subComponens}
             </div>
         )
     }
 
-    return <aside className="shadow-md">
-        <button className="fixed top-2 left-2 z-40" onClick={() => setExpanded(!expanded)}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
-        </button>
-        <AnimatePresence>
-            {expanded && 
-                <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] top-10 h-full float-left">
-                    <div className="fixed top-14 h-[calc(100%-50px)] overflow-y-auto border-t-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-secondary float-left">
-                        <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
-                            {
-                                arrayComponents
-                            }
+    return <>
+        <aside className="shadow-md z-50">
+            <button className="fixed top-2 left-2 z-50" onClick={() => setExpanded(!expanded)}>
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
+            </button>
+            <AnimatePresence>
+                {expanded &&
+                    <>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.40 }} exit={{ opacity: 0 }} className="visible sm:hidden bg-black fixed w-[100vw] h-[100vh] z-0" onClick={() => setExpanded(!expanded)} />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] top-10 h-full float-left">
+                            <div className="z-50 fixed top-14 h-[calc(100%-50px)] overflow-y-auto border-t-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-secondary float-left">
+                                <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
+                                    {arrayComponents}
+                                </motion.div>
+                            </div>
                         </motion.div>
-                    </div>
-                </motion.aside>
-            }
-        </AnimatePresence>
-    </aside>;
+                    </>}
+            </AnimatePresence>
+        </aside>
+    </>;
 }
