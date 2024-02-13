@@ -13,6 +13,7 @@ export const metadata = {
   title: 'Bedrock API Wiki',
   metadataBase: new URL("https://bedrock-apis.github.io/wiki"),
   openGraph:{
+    siteName: "Bedrock APIs",
     title:"Bedrock APIs Wiki",
     authors: ["conmaster", "dingsel", "test"],
     description: 'A Place To Share Minecraft Bedrock Knowlage ✨'
