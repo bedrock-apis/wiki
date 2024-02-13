@@ -1,7 +1,7 @@
-import exp from "constants";
-import { readFileSync } from "fs";
+import { existsSync, readFileSync, statfsSync } from "fs";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { resolve } from "path";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
@@ -29,17 +29,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 let i = 0;
 function Headers(fontSize: number, underLine: boolean = false) {
 	return ({ children }: { children?: any }) => <div className="my-2">
-		<h1  style={{ fontSize }}>{children}</h1>
+		<h1 className="break-normal" style={{ fontSize }}>{children}</h1>
 		{underLine ? <hr className="border-sub -mt-2 border-t-[2.5px] mx-1" /> : undefined}
 	</div>
 }
 function Paragraph({ children }: { children?: any }) {
-	return <p className="my-0.5">
+	return <p className="my-0.5 break-normal">
 		{children}
 	</p>
 }
-function A({ children, href }: { children?: any, href?: string }) {
-	return <Link className="text-cyan-500 hover:underline" href={href ?? "/"}>
+function A({ children, href, title }: { children?: any, href?: string, title?: string }) {
+	return <Link className="text-cyan-500 hover:underline hover:text-cyan-400" href={href ?? "/"} title={title??""}>
 		{children}
 	</Link>
 }
@@ -54,12 +54,12 @@ export function Code(params: any) {
 	return <div>
 		{params.children}
 	</div>
-	else return <code className="bg-black bg-opacity-20 px-1 py-0.5 text-indigo-500 text-sm rounded-[0.2rem]">{params.children}</code>
+	else return <code className="bg-black bg-opacity-20 border-b-2 border-indigo-900 border-opacity-60 px-1 text-indigo-500 text-sm rounded-[0.2rem]">{params.children}</code>
 }
 export function PreCode(params: any) {
 	multilineCodeBlocks.add(params.children.props);
 	return (
-		<pre className="border my-1 bg-black bg-opacity-20 border-text-primary rounded-[0.3rem] px-2 py-1">
+		<pre className="border border-opacity-50 my-1 bg-black bg-opacity-20 border-gray-600 shadow-sm rounded-[0.3rem] px-2 py-1">
 			{
 				params.className in languageToTextMap?
 				<>
@@ -75,33 +75,35 @@ export function PreCode(params: any) {
 	)
 }
 export function Image(params: any) {
-	return <img className="m-3 rounded-sm max-h-[25rem] max-w-full" src={"resources/" + params.src} alt="logo" />
+	const src = params.src??"";
+	if(!src.startsWith("http")) statfsSync(resolve("./public/resources/", src));
+	return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={"resources/" + params.src} alt="logo" />
 }
 
 
 export function TableTh(params: any) {
-	return <th className="p-0 text-lg bg-black bg-opacity-20 border border-slate-200 border-opacity-20" style={params.style}>
+	return <th className="p-0 text-lg bg-black bg-opacity-20 border border-slate-400 border-opacity-20" style={params.style}>
 		<div className="px-4">
 			{params.children}
 		</div>
 	</th>
 }
 export function TableTd(params: any) {
-	return <td className="p-0 -m-0.5  border border-slate-200 border-opacity-20" style={params.style}>
+	return <td className="p-0 -m-0.5 border border-slate-400 border-opacity-20" style={params.style}>
 		<div className="px-2">
 			{params.children}
 		</div>
 	</td>
 }
 export function Table(params: any) {
-	return <div className=" bg-slate-600 bg-opacity-10 border border-slate-400 border-opacity-50 rounded-[0.2rem] inline-block mb-2">
+	return <div className=" bg-black shadow-sm bg-opacity-20 border border-gray-400 border-opacity-40 rounded-[0.2rem] inline-block mb-2">
 		<table className="">
 			{params.children}
 		</table>
 	</div>
 }
 export function BlockQuote(params: any){
-	return <div className="pl-3 my-1 pr-2 py-0.5 border-l-[0.35rem] border-gray-400 border-opacity-40 bg-black bg-opacity-20 rounded-[0.1rem]">
+	return <div className="pl-3 my-1 pr-2 py-0.5 shadow-sm border-l-[0.35rem] border-gray-400 border-opacity-40 bg-black bg-opacity-20 rounded-[0.1rem]">
 		{params.children}
 	</div>
 }
