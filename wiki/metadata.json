@@ -1,5 +1,10 @@
 {
-    "tags":{},
+    "tags":{
+        "depracated":{
+            "display":"Deprecated",
+            "color":"#990000"
+        }
+    },
     "blog_kind":{
         "docs": {
             "display":"Documentation",
