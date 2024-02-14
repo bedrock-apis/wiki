@@ -1,4 +1,4 @@
-import { RemoveSuffix } from "@/features/functions";
+import { RemoveSuffix, getProfileInfo } from "@/features/functions";
 import { LoadThem, GetWikiPaths, meta_informations } from "@/features/getAllTopics";
 import { Metadata } from "next";
 
@@ -15,15 +15,23 @@ export async function generateStaticParams() {
 export default async function GetMarkdownPageView({ params }: StaticSlugParams) {
     const slg = params.slug;
     const [blogs, metadatas] = await LoadThem();
-    const {displayName, tags = []} = metadatas[slg.join("/")] as {displayName: string, tags?: string[]}
+    const {displayName,author, tags = []} = metadatas[slg.join("/")] as {displayName: string, tags?: string[], author?: string}
+    const info = await getProfileInfo(author??"");
     const MdxData = blogs[slg.join("/")];
     const tagDefs = meta_informations.tags;
     return (
         <div className="m-[1%] flex">
             <article className="w-full">
-                <h1 style={{fontSize: 50}}>{displayName}</h1>
-                <hr className="border-sub border-t-2 -mt-2 mb-1"></hr>
-                <div className="mb-3 flex flex-wrap">
+                <div className="flex">
+                    <h1 className="w-full" style={{fontSize: 50}}>{displayName}</h1>
+                    {info?
+                    <div className="self-center mr-[5%]">
+                        <AuthorInfo>{info}</AuthorInfo>
+                    </div>
+                    :undefined}
+                </div>
+                <hr className="border-sub border-t-2 -mt-1 mb-2"></hr>
+                <div className="mb-4 flex flex-wrap">
                     {tags.map((e: string,i)=>{
                         if(!(e in tagDefs)) return undefined;
                         const {color, display, "text-color": textColor} = tagDefs[e];
@@ -43,9 +51,18 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
     }
 }
 export function Tag(data: {children?: any, color?: string, textColor?: string}){
-    return <div className="px-1.5 shadow-md mr-1.5 mb-1 rounded-md"  style={{backgroundColor: data.color}}>
+    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md"  style={{backgroundColor: data.color}}>
         <p className="opacity-90" style={{color: data.textColor??"--text-primary", fontWeight:700}}>
             {data.children}
         </p>
     </div>
+}
+export function AuthorInfo(data: {children: any}){
+    return <a className="flex w-min h-[2.5rem] self-center rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
+        <p className="self-center text-xl mr-2 text-nowrap">
+            <span className="opacity-80 text-sm mr-2">by </span>
+            {data.children.name}
+        </p>
+        <img src={data.children.avatar_url} className="object-contain h-[100%] shadow-xl self-center mr-3 border-slate-300 border-2 rounded-full"/>
+    </a>
 }
