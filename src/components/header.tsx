@@ -16,7 +16,7 @@ export default function Header() {
                     <HyperLink link="https://github.com/bedrock-apis/wiki" content="Github" smallHidden={true}/>
                     <HyperLink link="https://discord.gg/38M6A2RvKk" content="Discord"/>
                 </div>
-            </div>
+            </div> 
         </div>
     </header>
 }
