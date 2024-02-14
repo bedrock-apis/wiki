@@ -26,7 +26,14 @@ export function* GetWikiPaths() {
 
 
 export const meta_informations: {
-    "blog_kind": {[k: string]: {color: string, display: string}},
-    "tags": {[k: string]: {color: string, display: string}}
+    "blog_kind": {[k: string]: {
+        color: string, 
+        display: string
+    }},
+    "tags": {[k: string]: {
+        color: string,
+        display: string,
+        "text-color"?: string
+    }}
     "code-languages": {[k: string]: string}
 } = JSON.parse(readFileSync("./wiki/metadata.json").toString());

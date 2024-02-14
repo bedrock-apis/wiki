@@ -26,8 +26,8 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
                 <div className="mb-3 flex flex-wrap">
                     {tags.map((e: string,i)=>{
                         if(!(e in tagDefs)) return undefined;
-                        const {color, display} = tagDefs[e];
-                        return <Tag key={i} color={color}>{display}</Tag>
+                        const {color, display, "text-color": textColor} = tagDefs[e];
+                        return <Tag key={i} color={color} textColor={textColor}>{display}</Tag>
                     })}
                 </div>
                 <MdxData />
@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
         title: `${params.slug.map(x => x.charAt(0).toUpperCase() + x.substring(1)).join("->")} on Bedrock API Wiki`
     }
 }
-export function Tag(data: {children?: any, color?: string}){
-    return <div className="px-1.5 shadow-md font-semibold mr-1.5 mb-1 rounded-md"  style={{backgroundColor: data.color}}>
-        <p className="opacity-90">
+export function Tag(data: {children?: any, color?: string, textColor?: string}){
+    return <div className="px-1.5 shadow-md mr-1.5 mb-1 rounded-md"  style={{backgroundColor: data.color}}>
+        <p className="opacity-90" style={{color: data.textColor??"--text-primary", fontWeight:700}}>
             {data.children}
         </p>
     </div>

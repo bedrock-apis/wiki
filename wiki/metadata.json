@@ -3,6 +3,11 @@
         "depracated":{
             "display":"Deprecated",
             "color":"#990000"
+        },
+        "js":{
+            "display":"JavaScript",
+            "color":"#cca300",
+            "text-color":"black"
         }
     },
     "blog_kind":{
