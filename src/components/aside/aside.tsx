@@ -1,6 +1,4 @@
 "use client";
-import ButtonLink from "@/components/buttonLink/buttonLink";
-import { isMobile } from "@/hooks/useSize";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
