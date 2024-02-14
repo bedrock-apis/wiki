@@ -10,3 +10,11 @@ export function RemoveSuffix(fileName: string) {
     const spl = fileName.split(".");
     return fileName.substring(0,fileName.length - spl[spl.length-1].length - 1);
 }
+const fetchedUsers: {[k: string]: any} = {};
+export async function getProfileInfo(profileName: string){
+    if(profileName in fetchedUsers) return fetchedUsers[profileName];
+    const source = await fetch("https://api.github.com/users/" + profileName);
+    if(source.status == 404) return null;
+    const data = source.json();
+    return data;
+}

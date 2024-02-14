@@ -1,8 +1,11 @@
 ---
 displayName: API Environment
-tag: docs
+kind: docs
+author: conmaster2112
+tags:
+ - depracated
+ - js
 ---
-# API Environment
 Minecraft: Bedrock Edition uses their own version of JavaScript based on QuickJS. It uses the ECMAScript module (ESM) system for organizing and loading code, which allows for a more modular and organized approach to writing scripts for the game.
 
 ## Common problems
