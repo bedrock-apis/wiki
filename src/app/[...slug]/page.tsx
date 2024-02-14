@@ -1,16 +1,9 @@
-import { GetFilesTree, RemoveSuffix } from "@/features/functions";
-import { LoadThem, GetWikiPaths } from "@/features/getAllTopics";
-import { Image } from "@/mdx-components";
-import { readFileSync } from "fs";
+import { RemoveSuffix } from "@/features/functions";
+import { LoadThem, GetWikiPaths, meta_informations } from "@/features/getAllTopics";
 import { Metadata } from "next";
 
 type StaticSlugParams = { params: Awaited<ReturnType<typeof generateStaticParams>>[number] }
-/*
-const images: {[k: string]: {fileName: string, slugId: string}} = {};
-for (const file of GetFilesTree("./images")){
-    const [base, imagesFolder, fileName] = file.split("/");
-    images[fileName.split(".")[0]] = {fileName, slugId: fileName.split(".")[0]}
-}*/
+const meta = meta_informations;
 export async function generateStaticParams() {
     const slugs = [];
     for (const ss of GetWikiPaths()) {
@@ -22,10 +15,13 @@ export async function generateStaticParams() {
 export default async function GetMarkdownPageView({ params }: StaticSlugParams) {
     const slg = params.slug;
     const [blogs, metadatas] = await LoadThem();
+    const {displayName} = metadatas[slg.join("/")]
     const MdxData = blogs[slg.join("/")];
     return (
         <div className="m-[1%] flex">
             <article className="w-full">
+                <h1 style={{fontSize: 50}}>{displayName}</h1>
+                <hr className="border-sub border-t-2 -mt-2"></hr>
                 <MdxData />
             </article>
             {/* <div className="border-opacity-20 my-10 border-gray-400 border-l-2 ml-[2%] float-right min-w-40 max-w-60 w-[40%]" style={{visibility:isMobile()?"hidden":"visible"}}></div> */}

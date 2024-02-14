@@ -4,7 +4,7 @@ import "../styles/globals.css";
 import "../styles/codelights.css";
 import Footer from "@/components/footer";
 import { Metadata } from "next";
-import { LoadThem } from "@/features/getAllTopics";
+import { LoadThem, meta_informations } from "@/features/getAllTopics";
 import { readFileSync } from "fs";
 import BaseView from "@/components/BaseView";
 import { URL } from "url";
@@ -27,10 +27,10 @@ export default async function RootLayout({
 }) {
   const [blogs, metadatas] = await LoadThem();
   const menus = {} as any;
-  const options = {tags: JSON.parse(readFileSync("./wiki/tags_definition.json").toString()), menus};
+  const options = {tags: meta_informations.blog_kind, menus};
   Object.keys(blogs).filter(e=>metadatas[e]?.displayName).forEach(e=>{
-    const {tag="dev", displayName} = metadatas[e]??{};
-    const m = menus[tag] = menus[tag]??[];
+    const {kind="blog", displayName} = metadatas[e]??{};
+    const m = menus[kind] = menus[kind]??[];
     m.push({title:displayName, link: e});
   });
   return (

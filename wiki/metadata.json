@@ -1,0 +1,34 @@
+{
+    "tags":{},
+    "blog_kind":{
+        "docs": {
+            "display":"Documentation",
+            "color":"#0059b3"
+        },
+        "blog":{
+            "display": "Blogs",
+            "color":"#660066"
+        },
+        "dev": {
+            "display":"Examples",
+            "color":"#987420"
+        },
+        "guide":{
+            "display":"Guides",
+            "color":"#004d00"
+        }
+    },
+    "code-languages":{
+        "language-js": "JavaScript",
+        "language-javascript": "JavaScript",
+        "language-ts": "TypeScript",
+        "language-typescript": "TypeScript",
+        "language-json": "JSON",
+        "language-md": "Markdown",
+        "language-markdown": "Markdown",
+        "language-cpp": "C++",
+        "language-c": "C",
+        "language-h": "C",
+        "language-hpp": "C"
+    }
+}

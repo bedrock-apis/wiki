@@ -2,6 +2,7 @@ import { existsSync, readFileSync, statfsSync } from "fs";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { resolve } from "path";
+import { meta_informations } from "./features/getAllTopics";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
@@ -107,7 +108,7 @@ export function BlockQuote(params: any){
 		{params.children}
 	</div>
 }
-const languageToTextMap = JSON.parse(readFileSync("./wiki/language-maps.json").toString()) as { [key: string]: any }
+const languageToTextMap = meta_informations["code-languages"];
 
 
 ////////////////////// Custom elements

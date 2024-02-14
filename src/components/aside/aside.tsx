@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 
 export interface SideBarOptions {
-    tags: { [k: string]: { title: string, color?: string } }
+    tags: { [k: string]: { display: string, color?: string } }
     menus: { [k: string]: { title: string, link: string }[] }
 }
 export default function SideBar(params: { options: SideBarOptions }) {
@@ -46,10 +46,14 @@ export default function SideBar(params: { options: SideBarOptions }) {
     let i = 0;
     for (const tag of Object.keys(params.options.tags)) {
         if (!(tag in params.options.menus)) continue;
-        const { title, color } = params.options.tags[tag];
+        const { display: title, color } = params.options.tags[tag];
         const subComponens = [];
         subComponens.push(
-            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5" style={{ "backgroundColor": color ?? "#ff0000", fontSize: 22 }}>
+            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5 flex" style={{ "backgroundColor": color ?? "#ff0000", fontSize: 22 }}>
+                {/*<svg className="pt-[0.3rem] m-1 h-5 self-center" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,0 12,0 6,10" style={{fill:"white"}}/>
+                    Sorry, your browser does not support inline SVG.
+        </svg>*/}
                 {title}
             </div>
         );
