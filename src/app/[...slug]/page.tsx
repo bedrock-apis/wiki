@@ -24,7 +24,7 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
                 <div className="flex">
                     <h1 className="w-full" style={{fontSize: 50}}>{displayName}</h1>
                     {info?
-                    <div className="self-center mr-[5%]">
+                    <div className="self-end mb-3 mr-[5%]">
                         <AuthorInfo>{info}</AuthorInfo>
                     </div>
                     :undefined}
@@ -57,11 +57,11 @@ function Tag(data: {children?: any, color?: string, textColor?: string}){
     </div>
 }
 function AuthorInfo(data: {children: any}){
-    return <a className="flex w-min h-[2.5rem] self-center rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
-        <p className="self-center text-xl mr-2 text-nowrap">
-            <span className="opacity-80 text-sm mr-2">by </span>
-            {data.children.name}
-        </p>
+    return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
+        <div className="self-center text-xl mr-2 flex flex-nowrap">
+            <span className="opacity-80 self-end text-sm mr-1">by </span>
+            <p className="sm:visible invisible w-0 sm:w-full">{data.children.name}</p>
+        </div>
         <img src={data.children.avatar_url} className="object-contain h-[100%] shadow-xl self-center mr-3 border-slate-300 border-2 rounded-full"/>
     </a>
 }
