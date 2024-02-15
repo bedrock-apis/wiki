@@ -13,9 +13,9 @@ export default function SideBar(params: { options: SideBarOptions }) {
     //const mobile = isMobile()
 
     const [expanded, setExpanded] = useState(true);
-    
-    useEffect(()=>{
-        (window as any).__sidebar = ()=>setExpanded(!expanded);
+
+    useEffect(() => {
+        window.__sidebar = () => setExpanded(!expanded);
     })
 
     const container = {
@@ -71,20 +71,20 @@ export default function SideBar(params: { options: SideBarOptions }) {
 
     return <>
         <aside className="mt-[3.5rem]">
-                <AnimatePresence>
-                    {expanded &&
-                        <>
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.40 }} exit={{ opacity: 0 }} className="visible sm:hidden bg-black fixed w-[100vw] h-[100vh] z-0" onClick={() => setExpanded(!expanded)} />
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] h-full float-left">
-                                <div className="z-50 fixed h-[calc(100%-50px)] overflow-y-auto border-t-0 border-l-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-[--main] shadow-md float-left">
-                                    <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
-                                        {arrayComponents}
-                                    </motion.div>
-                                </div>
-                            </motion.div>
-                        </>
-                    }
-                </AnimatePresence>
+            <AnimatePresence>
+                {expanded &&
+                    <>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.40 }} exit={{ opacity: 0 }} className="visible sm:hidden bg-black fixed w-[100vw] h-[100vh] z-0" onClick={() => setExpanded(!expanded)} />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] h-full float-left">
+                            <div className="z-50 fixed h-[calc(100%-50px)] overflow-y-auto border-t-0 border-l-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-[--main] shadow-md float-left">
+                                <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
+                                    {arrayComponents}
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </>
+                }
+            </AnimatePresence>
         </aside>
     </>;
 }
