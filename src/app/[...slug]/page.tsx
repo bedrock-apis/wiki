@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
     }
 }
 function Tag(data: {children?: any, color?: string, textColor?: string}){
-    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md"  style={{backgroundColor: data.color}}>
+    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md -z-10"  style={{backgroundColor: data.color}}>
         <p className="opacity-90" style={{color: data.textColor??"--text-primary", fontWeight:700}}>
             {data.children}
         </p>
