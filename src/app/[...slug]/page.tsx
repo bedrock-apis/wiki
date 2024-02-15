@@ -14,26 +14,26 @@ export async function generateStaticParams() {
 export default async function GetMarkdownPageView({ params }: StaticSlugParams) {
     const slg = params.slug;
     const [blogs, metadatas] = await LoadThem();
-    const {displayName,author, tags = []} = metadatas[slg.join("/")] as {displayName: string, tags?: string[], author?: string}
-    const info = await getProfileInfo(author??"");
+    const { displayName, author, tags = [] } = metadatas[slg.join("/")] as { displayName: string, tags?: string[], author?: string }
+    const info = await getProfileInfo(author ?? "");
     const MdxData = blogs[slg.join("/")];
     const tagDefs = meta_informations.tags;
     return (
         <div className="m-[1%] flex">
             <article className="w-full">
                 <div className="flex">
-                    <h1 className="w-full" style={{fontSize: 50}}>{displayName}</h1>
-                    {info?
-                    <div className="self-end mb-3 mr-[5%]">
-                        <AuthorInfo>{info}</AuthorInfo>
-                    </div>
-                    :undefined}
+                    <h1 style={{ fontSize: 50 }}>{displayName}</h1>
+                    {info ?
+                        <div className="self-end mb-3 mr-[5%]">
+                            <AuthorInfo>{info}</AuthorInfo>
+                        </div>
+                        : undefined}
                 </div>
                 <hr className="border-sub border-t-2 -mt-1 mb-2"></hr>
                 <div className="mb-4 flex flex-wrap">
-                    {tags.map((e: string,i)=>{
-                        if(!(e in tagDefs)) return undefined;
-                        const {color, display, "text-color": textColor} = tagDefs[e];
+                    {tags.map((e: string, i) => {
+                        if (!(e in tagDefs)) return undefined;
+                        const { color, display, "text-color": textColor } = tagDefs[e];
                         return <Tag key={i} color={color} textColor={textColor}>{display}</Tag>
                     })}
                 </div>
@@ -49,19 +49,19 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
         title: `${params.slug.map(x => x.charAt(0).toUpperCase() + x.substring(1)).join("->")} on Bedrock API Wiki`
     }
 }
-function Tag(data: {children?: any, color?: string, textColor?: string}){
-    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md -z-10"  style={{backgroundColor: data.color}}>
-        <p className="opacity-90" style={{color: data.textColor??"--text-primary", fontWeight:700}}>
+function Tag(data: { children?: any, color?: string, textColor?: string }) {
+    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md -z-10" style={{ backgroundColor: data.color }}>
+        <p className="opacity-90" style={{ color: data.textColor ?? "--text-primary", fontWeight: 700 }}>
             {data.children}
         </p>
     </div>
 }
-function AuthorInfo(data: {children: any}){
+function AuthorInfo(data: { children: any }) {
     return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
         <div className="self-center text-xl mr-2 flex flex-nowrap">
             <span className="opacity-80 self-end text-sm mr-1">by </span>
             <p className="sm:visible invisible w-0 sm:w-full">{data.children.name}</p>
         </div>
-        <img src={data.children.avatar_url} className="object-contain h-[100%] shadow-xl self-center mr-3 border-slate-300 border-2 rounded-full"/>
+        <img src={data.children.avatar_url} className="object-contain h-[100%] shadow-xl self-center mr-3 border-slate-300 border-2 rounded-full" />
     </a>
 }
