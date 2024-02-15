@@ -1,4 +1,4 @@
-import { RemoveSuffix, getProfileInfo } from "@/features/functions";
+import { ProfileInfo, RemoveSuffix, UserLike, getProfileInfo } from "@/features/functions";
 import { LoadThem, GetWikiPaths, meta_informations } from "@/features/getAllTopics";
 import { Metadata } from "next";
 
@@ -56,7 +56,7 @@ function Tag(data: { children?: any, color?: string, textColor?: string }) {
         </p>
     </div>
 }
-function AuthorInfo(data: { children: any }) {
+function AuthorInfo(data: { children: UserLike }) {
     return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
         <div className="self-center text-xl mr-2 flex flex-nowrap">
             <span className="opacity-80 self-end text-sm mr-1">by </span>
