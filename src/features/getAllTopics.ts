@@ -39,4 +39,4 @@ export const meta_informations: {
         "text-color"?: string
     }}
     "code-languages": {[k: string]: string}
-} = JSON.parse(readFileSync("./" + path +"/metadata.json").toString());
+} = JSON.parse(readFileSync(hasSourcePath?"./src/" + path +"/metadata.json":"./wiki/metadata.json").toString());
