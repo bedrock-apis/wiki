@@ -1,5 +1,13 @@
 {
     "tags":{
+        "info":{
+            "display":"Information",
+            "color":"#0059b3"
+        },
+        "outdated":{
+            "display":"Outdated",
+            "color":"#994411"
+        },
         "depracated":{
             "display":"Deprecated",
             "color":"#990000"

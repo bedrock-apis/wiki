@@ -2,6 +2,7 @@ import { readFileSync } from "fs";
 import { GetFilesTree, RemoveSuffix } from "./functions";
 import { ComponentType } from "react";
 
+const path = process.env.__source_path??"wiki";
 export async function LoadThem() {
     const metadatas: { [k: string]: {[k: string]: any} } = {};
     const obj: { [k: string]: ComponentType<{}> } = {};

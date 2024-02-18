@@ -10,6 +10,8 @@ jobs:
     check:
         name: Build Check
         runs-on: ubuntu-latest
+        env:
+          __source_path: wiki_build
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -25,6 +27,8 @@ jobs:
 
             - name: Check Linting 🔎
               run: npm run lint
+            - name: Map
+              run: node .
 
             - name: Check Build 🔧
               run: npm run build

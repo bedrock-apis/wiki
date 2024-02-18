@@ -6,7 +6,7 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import remarkGfp from "remark-gfm";
 
 const withMDX = w({
-  extension: /\.(md|mdx)$/,
+  extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfp,remarkFrontmatter,[remarkMdxFrontmatter, {name:'metadata'}]],
     rehypePlugins: [rehypePrism, rehypeCodeTitles],
@@ -17,7 +17,7 @@ const withMDX = w({
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
   images: {
     unoptimized: true
   },
