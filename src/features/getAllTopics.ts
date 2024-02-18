@@ -1,8 +1,9 @@
+import { readFileSync } from "fs";
 import { GetFilesTree, RemoveSuffix } from "./functions";
 import { ComponentType } from "react";
 
 export async function LoadThem() {
-    const metadatas: { [k: string]: any } = {};
+    const metadatas: { [k: string]: {[k: string]: any} } = {};
     const obj: { [k: string]: ComponentType<{}> } = {};
     for (const ss of GetWikiPaths()) {
         const j = ss.join("/");
@@ -11,7 +12,7 @@ export async function LoadThem() {
         obj[k] = m.default;
         metadatas[k] = m.metadata;
     }
-    return [obj, metadatas];
+    return [obj, metadatas] as [typeof obj, typeof metadatas];
 }
 export function* GetWikiPaths() {
     for (const filePath of GetFilesTree("./wiki")) {
@@ -22,3 +23,17 @@ export function* GetWikiPaths() {
         }
     }
 }
+
+
+export const meta_informations: {
+    "blog_kind": {[k: string]: {
+        color: string, 
+        display: string
+    }},
+    "tags": {[k: string]: {
+        color: string,
+        display: string,
+        "text-color"?: string
+    }}
+    "code-languages": {[k: string]: string}
+} = JSON.parse(readFileSync("./wiki/metadata.json").toString());

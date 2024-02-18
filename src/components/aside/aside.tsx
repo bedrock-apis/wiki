@@ -1,13 +1,11 @@
 "use client";
-import ButtonLink from "@/components/buttonLink/buttonLink";
-import { isMobile } from "@/hooks/useSize";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
 export interface SideBarOptions {
-    tags: { [k: string]: { title: string, color?: string } }
+    tags: { [k: string]: { display: string, color?: string } }
     menus: { [k: string]: { title: string, link: string }[] }
 }
 export default function SideBar(params: { options: SideBarOptions }) {
@@ -15,9 +13,9 @@ export default function SideBar(params: { options: SideBarOptions }) {
     //const mobile = isMobile()
 
     const [expanded, setExpanded] = useState(true);
-    
-    useEffect(()=>{
-        (window as any).__sidebar = ()=>setExpanded(!expanded);
+
+    useEffect(() => {
+        window.__sidebar = () => setExpanded(!expanded);
     })
 
     const container = {
@@ -46,10 +44,14 @@ export default function SideBar(params: { options: SideBarOptions }) {
     let i = 0;
     for (const tag of Object.keys(params.options.tags)) {
         if (!(tag in params.options.menus)) continue;
-        const { title, color } = params.options.tags[tag];
+        const { display: title, color } = params.options.tags[tag];
         const subComponens = [];
         subComponens.push(
-            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5" style={{ "backgroundColor": color ?? "#ff0000", fontSize: 22 }}>
+            <div key={"_" + i++} className="rounded-md shadow-md relative -ml-3 -mt-2 -mr-1 px-1.5 flex" style={{ "backgroundColor": color ?? "#ff0000", fontSize: 22 }}>
+                {/*<svg className="pt-[0.3rem] m-1 h-5 self-center" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,0 12,0 6,10" style={{fill:"white"}}/>
+                    Sorry, your browser does not support inline SVG.
+        </svg>*/}
                 {title}
             </div>
         );
@@ -69,20 +71,20 @@ export default function SideBar(params: { options: SideBarOptions }) {
 
     return <>
         <aside className="mt-[3.5rem]">
-                <AnimatePresence>
-                    {expanded &&
-                        <>
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.40 }} exit={{ opacity: 0 }} className="visible sm:hidden bg-black fixed w-[100vw] h-[100vh] z-0" onClick={() => setExpanded(!expanded)} />
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] h-full float-left">
-                                <div className="z-50 fixed h-[calc(100%-50px)] overflow-y-auto border-t-0 border-l-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-[--main] shadow-md float-left">
-                                    <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
-                                        {arrayComponents}
-                                    </motion.div>
-                                </div>
-                            </motion.div>
-                        </>
-                    }
-                </AnimatePresence>
+            <AnimatePresence>
+                {expanded &&
+                    <>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.40 }} exit={{ opacity: 0 }} className="visible sm:hidden bg-black fixed w-[100vw] h-[100vh] z-0" onClick={() => setExpanded(!expanded)} />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-[14rem] max-w-[15rem] h-full float-left">
+                            <div className="z-50 fixed h-[calc(100%-50px)] overflow-y-auto border-t-0 border-l-0 border min-w-[14rem] max-w-[15rem] border-highlight bg-[--main] shadow-md float-left">
+                                <motion.div variants={container} initial="hidden" animate="visible" className="flex my-1.5 flex-col px-3">
+                                    {arrayComponents}
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </>
+                }
+            </AnimatePresence>
         </aside>
     </>;
 }
