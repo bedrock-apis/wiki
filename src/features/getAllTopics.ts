@@ -18,7 +18,7 @@ export async function LoadThem() {
     return [obj, metadatas] as [typeof obj, typeof metadatas];
 }
 export function* GetWikiPaths() {
-    for (const filePath of GetFilesTree("./"+path)) {
+    for (const filePath of GetFilesTree(hasSourcePath?"./src/" + process.env.__source_path:"wiki")) {
         const [base, wiki, ...ss] = filePath.split("/");
         const fileName = ss[ss.length - 1];
         if ((!fileName?.startsWith("__")) && (fileName?.endsWith(".md") || fileName?.endsWith(".mdx"))) {
