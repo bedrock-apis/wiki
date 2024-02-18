@@ -19,7 +19,7 @@ export async function LoadThem() {
 }
 export function* GetWikiPaths() {
     for (const filePath of GetFilesTree(hasSourcePath?"./src/" + process.env.__source_path:"wiki")) {
-        const [base, wiki, ...ss] = filePath.split("/");
+        const ss = filePath.split("/").slice(hasSourcePath?3:2);
         const fileName = ss[ss.length - 1];
         if ((!fileName?.startsWith("__")) && (fileName?.endsWith(".md") || fileName?.endsWith(".mdx"))) {
             yield ss;
