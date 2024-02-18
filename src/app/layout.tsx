@@ -12,6 +12,9 @@ import { URL } from "url";
 export const metadata = {
   title: 'Bedrock API Wiki',
   metadataBase: new URL("https://bedrock-apis.github.io/wiki"),
+  other:{
+    "color-scheme":"dark light"
+  },
   openGraph:{
     siteName: "Bedrock APIs",
     title:"Bedrock APIs Wiki",

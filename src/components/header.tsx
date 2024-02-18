@@ -11,7 +11,7 @@ export default function Header() {
                 <ButtonLink link="/" className="float-left text-2xl ml-16 w-min font-bold text-nowrap">
                     Scripting Wiki
                 </ButtonLink>
-                <div className="w-full mr-[3%]">
+                <div className="w-full mr-[25px]">
                     <HyperLink link="https://wiki.bedrock.dev/" content="Bedrock Wiki" smallHidden={true}/>
                     <HyperLink link="https://github.com/bedrock-apis/wiki" content="Github" smallHidden={true}/>
                     <HyperLink link="https://discord.gg/38M6A2RvKk" content="Discord"/>

@@ -8,6 +8,18 @@
             "display":"JavaScript",
             "color":"#cca300",
             "text-color":"black"
+        },
+        "ts":{
+            "display":"TypeScript",
+            "color":"#0059b3"
+        },
+        "experimental":{
+            "display":"Experimental",
+            "color":"#26771d"
+        },
+        "pseudo":{
+            "display":"Pseudo Code",
+            "color":"#111"
         }
     },
     "blog_kind":{

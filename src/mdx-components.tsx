@@ -3,7 +3,8 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { resolve } from "path";
 import { meta_informations } from "./features/getAllTopics";
-
+import {Tag} from "./components/Tag";
+const tags = meta_informations.tags;
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
 		h1: Headers(50, true),
@@ -23,6 +24,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		WhiteSpace: WhiteSpace,
 		th: TableTh,
 		td: TableTd,
+		Tag: ({children}: {children?: any})=>((children??"_______") in tags?<Tag color={tags[children].color} textColor={tags[children]["text-color"]}>{tags[children].display}</Tag>:undefined),
 		hr: ({children}: {children?: any})=>(<hr className="border-sub border-t-2 my-1">{children}</hr>),
 		...components,
 	};
