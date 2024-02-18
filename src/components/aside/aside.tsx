@@ -55,7 +55,7 @@ export default function SideBar(params: { options: SideBarOptions }) {
                 {title}
             </div>
         );
-        for (const { title, link } of params.options.menus[tag]) subComponens.push(
+        for (const { title, link } of params.options.menus[tag]) if(!link.startsWith("~")) subComponens.push(
             <motion.div key={"__" + i++} variants={item} className="py-0.5 px-2 rounded-md cursor-pointer hover:bg-gray-400 hover:bg-opacity-5">
                 <Link href={"/" + link}>
                     <button className="w-full text-left" style={{ fontSize: 18 }}>{title}</button>

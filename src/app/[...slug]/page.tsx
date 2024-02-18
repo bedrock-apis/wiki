@@ -1,3 +1,4 @@
+import { Tag } from "@/components/Tag";
 import { ProfileInfo, RemoveSuffix, UserLike, getProfileInfo } from "@/features/functions";
 import { LoadThem, GetWikiPaths, meta_informations } from "@/features/getAllTopics";
 import { Metadata } from "next";
@@ -48,13 +49,6 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
     return {
         title: `${params.slug.map(x => x.charAt(0).toUpperCase() + x.substring(1)).join("->")} on Bedrock API Wiki`
     }
-}
-function Tag(data: { children?: any, color?: string, textColor?: string }) {
-    return <div className="px-1.5 shadow-md mr-1 mb-1 rounded-md -z-10" style={{ backgroundColor: data.color }}>
-        <p className="opacity-90" style={{ color: data.textColor ?? "--text-primary", fontWeight: 700 }}>
-            {data.children}
-        </p>
-    </div>
 }
 function AuthorInfo(data: { children: UserLike }) {
     return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>

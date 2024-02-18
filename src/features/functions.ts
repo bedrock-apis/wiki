@@ -22,9 +22,14 @@ export type ProfileInfo =  UserLike | null
 
 const fetchedUsers: { [k: string]: UserLike } = {};
 export async function getProfileInfo(profileName: string): Promise<ProfileInfo> {
+    if(profileName.length <= 3) return null;
     if (profileName in fetchedUsers) return fetchedUsers[profileName];
-    const source = await fetch("https://api.github.com/users/" + profileName);
-    if (source.status == 404) return null;
-    const data = source.json();
-    return data;
+    try {
+        const source = await fetch("https://api.github.com/users/" + profileName);
+        if (source.status == 404) return null;
+        const data = await source.json();
+        return fetchedUsers[profileName] = data;
+    } catch (error) {
+        return null;
+    }
 }
