@@ -1,9 +1,9 @@
 ---
 displayName: The MarkdownTest
-tag: dev
+kind: guide
+tags:
+ - js
 ---
-
-# Markdown
 
 ## Test Subject
 ajdfhasdkjfhasdfasdf
@@ -14,3 +14,4 @@ asd
 - asfasdgfsad
 - adsfasdfasdfas
 - sadfsadf
+<Tag>js</Tag>
