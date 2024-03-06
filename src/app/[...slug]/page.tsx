@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: StaticSlugParams): Promise<Me
     }
 }
 function AuthorInfo(data: { children: UserLike }) {
-    return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
+    return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url} target="_blank">
         <div className="self-center text-xl mr-2 flex flex-nowrap">
             <span className="opacity-80 self-end text-sm mr-1">by </span>
             <p className="sm:visible invisible w-0 sm:w-full">{data.children.name}</p>
