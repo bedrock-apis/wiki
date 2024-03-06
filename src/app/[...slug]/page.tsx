@@ -6,15 +6,18 @@ import { Metadata } from "next";
 type StaticSlugParams = { params: Awaited<ReturnType<typeof generateStaticParams>>[number] }
 export async function generateStaticParams() {
     const slugs = [];
+    const [blogs, metadatas] = await LoadThem();
     for (const ss of GetWikiPaths()) {
         ss[ss.length - 1] = RemoveSuffix(ss[ss.length - 1]);
-        slugs.push({ slug: [...ss] });
+        const hasMetadata =  metadatas[ss.join("/")] as any;
+        if(hasMetadata) slugs.push({ slug: [...ss] });
     }
     return slugs;
 }
 export default async function GetMarkdownPageView({ params }: StaticSlugParams) {
     const slg = params.slug;
     const [blogs, metadatas] = await LoadThem();
+    const hasMetadata =  metadatas[slg.join("/")] as any;
     const { displayName, author, tags = [] } = metadatas[slg.join("/")] as { displayName: string, tags?: string[], author?: string }
     const info = await getProfileInfo(author ?? "");
     const MdxData = blogs[slg.join("/")];
@@ -46,12 +49,15 @@ export default async function GetMarkdownPageView({ params }: StaticSlugParams) 
 }
 
 export async function generateMetadata({ params }: StaticSlugParams): Promise<Metadata> {
+    const [blogs, metadatas] = await LoadThem();
+    const slg = params.slug;
+    const { displayName, author, tags = [] } = metadatas[slg.join("/")] as { displayName: string, tags?: string[], author?: string }
     return {
-        title: `${params.slug.map(x => x.charAt(0).toUpperCase() + x.substring(1)).join("->")} on Bedrock API Wiki`
+        title: `${displayName}`
     }
 }
 function AuthorInfo(data: { children: UserLike }) {
-    return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url}>
+    return <a className="flex w-min h-[2.5rem] self-end rounded-xl hover:bg-gray-500 hover:bg-opacity-5 px-2" href={data.children.html_url} target="_blank">
         <div className="self-center text-xl mr-2 flex flex-nowrap">
             <span className="opacity-80 self-end text-sm mr-1">by </span>
             <p className="sm:visible invisible w-0 sm:w-full">{data.children.name}</p>
