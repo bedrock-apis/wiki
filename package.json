@@ -9,7 +9,8 @@
     "dev": "npx next dev",
     "build": "npx next build",
     "start": "npx next start",
-    "local": "powershell -Executionpolicy bypass ./local_build.ps1",
+    "local:build": "powershell -Executionpolicy bypass ./local_build.ps1",
+    "local:dev": "powershell -Executionpolicy bypass ./local_dev.ps1",
     "lint": "npx next lint"
   },
   "dependencies": {

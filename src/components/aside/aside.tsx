@@ -44,6 +44,7 @@ export default function SideBar(params: { options: SideBarOptions }) {
     let i = 0;
     for (const tag of Object.keys(params.options.tags)) {
         if (!(tag in params.options.menus)) continue;
+        console.log(params.options.menus);
         const { display: title, color } = params.options.tags[tag];
         const subComponens = [];
         subComponens.push(
