@@ -45,7 +45,11 @@
         },
         "guide":{
             "display":"Guides",
-            "color":"#004d00"
+            "color":"#96482C"
+        },
+        "data":{
+            "display":"Data Sheets",
+            "color":"#396727"
         }
     },
     "code-languages":{

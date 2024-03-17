@@ -1,17 +1,11 @@
 ---
 displayName: API Environment
-kind: docs
+kind: data
 author: conmaster2112
 tags:
- - depracated
- - js
- - ts
- - experimental
- - pseudo
  - info
- - outdated
 ---
-Minecraft: Bedrock Edition uses their own version of JavaScript based on QuickJS. It uses the ECMAScript module (ESM) system for organizing and loading code, which allows for a more modular and organized approach to writing scripts for the game.
+Minecraft: Bedrock Edition uses their own version of JavaScript environment based on QuickJS engine. Most things relay on ECMAScript (ES) specifications, but there are exceptions that are not subject to these specifications.
 
 ## Common problems
 
@@ -19,7 +13,7 @@ Minecraft: Bedrock Edition uses their own version of JavaScript based on QuickJS
 
     What people often run into when starting out with Minecraft Scripting is the problem with timing, the standards for timing code as you may have noticed are the `setTimeout` and `setInterval` functions and their clear functions.
 
-    These standardized methods are used by the frame system where you can set the delay to millisecond precision, but minecraft uses a tick to process changes in the world, right? That's why even these methods are not and will not be available, instead we got the [`system.runTimeout`](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system#runtimeout) and [`system.runInterval`](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system#runinterval) system methods from version 1.19.70, which delay to the precision of one tick, you can read more about on [Microsoft Docs](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system) or [Wiki Tutorial](/scripting/script-server#scheduling)
+    These standardized methods are used by the frame system where you can set the delay to millisecond precision, but minecraft uses a tick to process changes in the world, right? That's why even these methods are not and will not be available, instead we got the [`system.runTimeout`](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system#runtimeout) and [`system.runInterval`](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system#runinterval) system methods since 1.19.70 development cycle, which delay to the precision of one tick, you can read more about on [Microsoft Docs](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/system).
 
 - **Eval permission**
 

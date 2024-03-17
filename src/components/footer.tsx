@@ -5,6 +5,6 @@ export default function Footer() {
         <a href="/wiki/~privacy-policy" className="text-blue-400 hover:underline mx-2">Privacy & Policy</a>
         {"|"}
         <a href="https://github.com/bedrock-apis/wiki" target="_blank" className="text-blue-400 hover:underline mx-2">edit on Github</a>
-        <p>Not affiliated with Mojang</p>
+        <p>Not affiliated with Mojang or Microsoft</p>
     </footer>
 }
