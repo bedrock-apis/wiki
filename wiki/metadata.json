@@ -6,11 +6,11 @@
         },
         "outdated":{
             "display":"Outdated",
-            "color":"#994411"
+            "color":"#990000"
         },
         "depracated":{
             "display":"Deprecated",
-            "color":"#990000"
+            "color":"#994411"
         },
         "js":{
             "display":"JavaScript",
@@ -23,7 +23,7 @@
         },
         "experimental":{
             "display":"Experimental",
-            "color":"#26771d"
+            "color":"#396727"
         },
         "pseudo":{
             "display":"Pseudo Code",
