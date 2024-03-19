@@ -10,7 +10,7 @@ tags:
 In this article, you will learn how to create a `Hello World' addon plugin, although this is one of the simpler guides, so we assume that you already have your development environment ready and you know the basics of creating an addon for MCBE.
 
 ## Behavior Pack
-Behavior pack is one of the possible types of packages that your addon can contain, and it is currently the only type of package that can contain executable JS code. First, we need to create a `manifest.json` file, which will contain all the information and the package carrier, including information about our executable code.
+Behavior pack is one of the possible types of packs that your addon can contain, and it is currently the only type of pack that can contain executable JS code. First, we need to create a `manifest.json` file, which will contain all the information and the pack carrier, including information about our executable code.
 ```json
 {
     "format_version": 2,
@@ -40,14 +40,14 @@ Behavior pack is one of the possible types of packages that your addon can conta
 
 Open minecraft and you will find that your empty pack is visible in the behavior packs section and create a new world with that pack.
 
-![[]](empty-behavior.png)
+![[]](../images/empty-behavior.png)
 If this error message appears during creation, then we have achieved success.
 ```
 [Scripting][Error]-Plugin [Hello-World - 0.1.0] - does not contain main file [index.js].
 ```
 
 ## Entry source file
-After we have managed to prepare the package, all we have to do is add our script. Create a file that will be in the `scripts` folder located in the root of the package, then add the `index.js` file with your code:
+After we have managed to prepare the pack, all we have to do is add our script. Create a file that will be in the `scripts` folder located in the root of the pack, then add the `index.js` file with your code:
 ```js
 import {system} from "@minecraft/server";
 
@@ -63,4 +63,4 @@ system.runInterval(()=>{
 
 ## Congratulation
 You did it!
-![[]](hello-world.png)
+![[]](../images/hello-world.png)
