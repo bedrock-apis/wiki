@@ -61,17 +61,18 @@ export function Code(params: any) {
 }
 export function PreCode(params: any) {
 	multilineCodeBlocks.add(params.children.props);
+	console.log(params.children);
 	return (
 		<pre className="border border-opacity-50 my-1 bg-black bg-opacity-20 border-gray-600 shadow-sm rounded-[0.3rem] px-2 py-1">
 			{
 				params.className in languageToTextMap?
 				<>
 					<p className="text-xl m-1">{languageToTextMap[params.className]}</p>
-					<div className="bg-sub h-[1px] mb-2.5 rounded-sm" />
+					<div className="bg-sub h-[1px] -mb-1 rounded-sm" />
 				</>
 				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
 			}
-			<div className="pl-1 pb-2 pr-4 overflow-x-auto">
+			<div className="pl-1 py-2 pr-4 overflow-x-auto">
 				{params.children} 
 			</div>
 		</pre>

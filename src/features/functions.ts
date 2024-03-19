@@ -22,6 +22,7 @@ export type ProfileInfo =  UserLike | null
 
 const fetchedUsers: { [k: string]: UserLike } = {};
 export async function getProfileInfo(profileName: string): Promise<ProfileInfo> {
+    if(process.env.DEV_MODE) return null;
     if(profileName.length <= 3) return null;
     if (profileName in fetchedUsers) return fetchedUsers[profileName];
     try {
