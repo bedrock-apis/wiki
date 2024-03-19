@@ -1,4 +1,5 @@
 Get-ChildItem -Path ./src/wiki_build -File -Recurse | ForEach-Object { $_.Delete() }
-$env:__source_path = "wiki_build"
+$env:__source_path = "wiki_build";
+$env:DEV_MODE = $true;
 node .
 npx next dev
