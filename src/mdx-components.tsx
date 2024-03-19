@@ -100,9 +100,9 @@ export function Image(params: any) {
 		}
 		const a = statSync(resolve("./public/", path.slice(count).join("/")));
 		if(!a.isFile()) throw new ReferenceError("UNKNOWN IMAGE PATH: " + src);
-		return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
+		return <img className="m-[0.3rem] shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
 	}
-	return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
+	return <img className="m-[0.3rem] shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
 }
 
 
