@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, statfsSync } from "fs";
+import { existsSync, readFileSync, statfsSync, statSync } from "fs";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { resolve } from "path";
@@ -61,7 +61,6 @@ export function Code(params: any) {
 }
 export function PreCode(params: any) {
 	multilineCodeBlocks.add(params.children.props);
-	console.log(params.children);
 	return (
 		<pre className="border border-opacity-50 my-1 bg-black bg-opacity-20 border-gray-600 shadow-sm rounded-[0.3rem] px-2 py-1">
 			{
@@ -80,8 +79,30 @@ export function PreCode(params: any) {
 }
 export function Image(params: any) {
 	const src = params.src??"";
-	if(!src.startsWith("http")) statfsSync(resolve("./public/resources/", src));
-	return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={"resources/" + params.src} alt="logo" />
+	if(!src.startsWith("http")) {
+		const path = src.split("/");
+		let count = 0;
+		let k = 0;
+		for(const p of path) {
+			if(p === "." && k < 0) throw new ReferenceError("Invalid Path: " + src);
+			else if(p === ".." && k > 0) throw new ReferenceError("Invalid Path: " + src);
+			else if(p === "."){
+				k = 1;
+				count++;
+				break;
+			}
+			else if(p === ".."){
+				k = -1;
+				count++;
+				continue;
+			}
+			break;
+		}
+		const a = statSync(resolve("./public/", path.slice(count).join("/")));
+		if(!a.isFile()) throw new ReferenceError("UNKNOWN IMAGE PATH: " + src);
+		return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
+	}
+	return <img className="m-3 shadow-sm border border-gray-400 border-opacity-10 rounded-[0.3rem] max-h-[25rem] max-w-full" src={src} alt="logo" />
 }
 
 

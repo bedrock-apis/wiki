@@ -15,6 +15,7 @@
 wiki_build
 # production
 /build
+/public/images
 
 # misc
 .DS_Store
