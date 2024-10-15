@@ -57,7 +57,7 @@ export function Code(params: any) {
 	return <div>
 		{params.children}
 	</div>
-	else return <code className="bg-black bg-opacity-20 border-b-2 border-indigo-900 border-opacity-60 px-1 text-indigo-500 text-sm rounded-[0.2rem]">{params.children}</code>
+	else return <code className="bg-black bg-opacity-20 border-b-2 border-indigo-900 border-opacity-60 px-1 text-indigo-400 text-sm rounded-[0.2rem]">{params.children}</code>
 }
 export function PreCode(params: any) {
 	multilineCodeBlocks.add(params.children.props);
