@@ -66,8 +66,11 @@ export function PreCode(params: any) {
 			{
 				params.className in languageToTextMap?
 				<>
-					<p className="text-xl m-1">{languageToTextMap[params.className]}</p>
-					<div className="bg-sub h-[1px] -mb-1 rounded-sm" />
+					<div className="flex flex-nowrap w-full">
+						<p className="text-xl m-1">{languageToTextMap[params.className] + " Test"}</p>
+						<button className="mr-5">Copy</button>
+					</div>
+					<div className="bg-sub h-[1px] -mb-1 rounded-sm"/>
 				</>
 				:(params.className?console.warn("Unknown code block: " + params.className) as undefined:undefined)
 			}

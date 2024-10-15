@@ -2,8 +2,8 @@
 import ButtonLink from "./buttonLink/buttonLink"
 
 export default function Header() {
-    return <header className="w-full z-40">
-        <div className="fixed bg-secondary border border-l-0 border-t-0 border-b-1 border-highlight h-[3.5rem] w-full shadow-xl">
+    return <header className="w-full z-40 sticky">
+        <div className="fixed backdrop-blur-md backdrop-saturate-50 bg-gray-900 bg-opacity-80 border-highlight h-[3.5rem] w-full shadow-xl">
             <div className="m-3 h-min w-full flex flex-nowrap">
                 <button className="-my-[6px] px-1 rounded-md fixed hover:bg-slate-100 hover:bg-opacity-[0.02]" onClick={()=>window.__sidebar()}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="45" viewBox="0 -960 960 960" width="45"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
@@ -21,7 +21,7 @@ export default function Header() {
     </header>
 }
 export function HyperLink(data: {children?: any, link?: string, content?: string, smallHidden?: boolean}){
-    return <a href={data.link} target="_blank" className={"rounded-md float-right hover:bg-slate-600 hover:bg-opacity-20 text-xl opacity-80 hover:opacity-95 inline text-nowrap" + (data.smallHidden?" px-0 sm:px-2 invisible sm:visible w-0 sm:w-auto":" px-2")}>
+    return <a href={data.link} target="_blank" className={"rounded-md float-right hover:bg-slate-600 hover:bg-opacity-5 text-xl opacity-80 hover:opacity-95 inline text-nowrap" + (data.smallHidden?" px-0 sm:px-2 invisible sm:visible w-0 sm:w-auto":" px-2")}>
         {data.children??data.content}
     </a>
 }
