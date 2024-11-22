@@ -43,6 +43,11 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
+img {
+  border-radius: 0.5rem;
+  filter: drop-shadow(0 0 0.3rem black)
+}
+
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
@@ -98,6 +103,24 @@
   --vp-home-hero-image-filter: blur(80px);
 }
 
+.VPNavBar {
+  backdrop-filter: blur(1rem);
+  background-color: transparent;
+}
+
+.vp-adaptive-theme {
+  box-shadow: 0 0 0.3rem 1px #22222233;
+
+}
+
+.VPFeature {
+  box-shadow: 0 0 0.4rem #22222233;
+}
+
+.name {
+  filter: drop-shadow(0 0 0.3rem var(--main-brand-inverted));
+}
+
 @media (min-width: 640px) {
   :root {
     --vp-home-hero-image-filter: blur(56px);
@@ -150,6 +173,7 @@
   
   --main-brand-1: #CC9900;
   --main-brand-2: #BB8817;
+  --main-brand-inverted: #221100
   
 }
 
@@ -159,6 +183,7 @@
   --vp-c-gutter: #000000;
   --main-brand-1: #f4b415;
   --main-brand-2: #b48415;
+  --main-brand-inverted: #FFBB22
 }
 
 :root {

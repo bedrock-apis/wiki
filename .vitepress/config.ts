@@ -4,9 +4,12 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   srcDir: "./wiki",
   base: "/wiki",
-  cleanUrls: true,
+  //cleanUrls: true,
   title: "Bedrock APIs",
   description: "Bedrock Script API Wiki and Resources",
+  head:[
+    ["link",{rel: "icon", href:"/wiki/favicon.png"}]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
