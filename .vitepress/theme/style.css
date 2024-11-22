@@ -103,7 +103,7 @@ img {
   --vp-home-hero-image-filter: blur(80px);
 }
 
-.VPNavBar {
+.VPNav {
   backdrop-filter: blur(1rem);
   background-color: transparent;
 }
@@ -187,6 +187,7 @@ img {
 }
 
 :root {
+  --vp-nav-bg-color: transparent;
 
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
