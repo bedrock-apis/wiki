@@ -91,19 +91,11 @@
  * -------------------------------------------------------------------------- */
 
 :root {
+  
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(100deg, #FF9900 30%, #FFCC88 40% 50%, #FF9900 60%);
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #bd34fe 50%,
-    #47caff 50%
-  );
-  --vp-home-hero-image-filter: blur(44px);
+  --vp-home-hero-image-filter: blur(80px);
 }
 
 @media (min-width: 640px) {
@@ -137,3 +129,85 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+
+:root {
+  --vp-c-bg: #F0F0FF;
+  --vp-c-bg-alt: #FBF8F9;
+  --vp-c-bg-elv: #ffffFF;
+  --vp-c-bg-soft: #FFFFFF;
+}
+.dark {
+  --vp-c-bg: #10101b;
+  --vp-c-bg-alt: #16161f;
+  --vp-c-bg-elv: #202128;
+  --vp-c-bg-soft: #202127;
+}
+
+:root {
+  --vp-c-border: #c2c2d3;
+  --vp-c-divider: #e2e2e3;
+  --vp-c-gutter: #e2e2e3;
+  
+  --main-brand-1: #CC9900;
+  --main-brand-2: #BB8817;
+  
+}
+
+.dark {
+  --vp-c-border: #3c3f44;
+  --vp-c-divider: #2e2e32;
+  --vp-c-gutter: #000000;
+  --main-brand-1: #f4b415;
+  --main-brand-2: #b48415;
+}
+
+:root {
+
+  --vp-c-default-1: var(--vp-c-gray-1);
+  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-soft: var(--vp-c-gray-soft);
+
+  --vp-c-brand-1: var(--main-brand-1);
+  --vp-c-brand-2: var(--main-brand-2);
+  --vp-c-brand-3: var(--main-brand-2);
+  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  /* DEPRECATED: Use `--vp-c-brand-1` instead. */
+  --vp-c-brand: var(--vp-c-brand-1);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-note-1: var(--vp-c-brand-1);
+  --vp-c-note-2: var(--vp-c-brand-2);
+  --vp-c-note-3: var(--vp-c-brand-3);
+  --vp-c-note-soft: var(--vp-c-brand-soft);
+
+  --vp-c-success-1: var(--vp-c-green-1);
+  --vp-c-success-2: var(--vp-c-green-2);
+  --vp-c-success-3: var(--vp-c-green-3);
+  --vp-c-success-soft: var(--vp-c-green-soft);
+
+  --vp-c-important-1: var(--vp-c-purple-1);
+  --vp-c-important-2: var(--vp-c-purple-2);
+  --vp-c-important-3: var(--vp-c-purple-3);
+  --vp-c-important-soft: var(--vp-c-purple-soft);
+
+  --vp-c-warning-1: var(--vp-c-yellow-1);
+  --vp-c-warning-2: var(--vp-c-yellow-2);
+  --vp-c-warning-3: var(--vp-c-yellow-3);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+
+  --vp-c-danger-1: var(--vp-c-red-1);
+  --vp-c-danger-2: var(--vp-c-red-2);
+  --vp-c-danger-3: var(--vp-c-red-3);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+
+  --vp-c-caution-1: var(--vp-c-red-1);
+  --vp-c-caution-2: var(--vp-c-red-2);
+  --vp-c-caution-3: var(--vp-c-red-3);
+  --vp-c-caution-soft: var(--vp-c-red-soft);
+}

@@ -5,7 +5,7 @@ export default defineConfig({
   srcDir: "./wiki",
   base: "/wiki",
   cleanUrls: true,
-  title: "Script API Wiki",
+  title: "Bedrock APIs",
   description: "Bedrock Script API Wiki and Resources",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

@@ -10,6 +10,7 @@ bin/
 ./.vitepress/dist
 # testing
 /coverage
+/.vitepress/dist
 /dist
 # next.js
 /.next/
