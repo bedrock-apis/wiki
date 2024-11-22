@@ -6,6 +6,7 @@ hero:
   name: "Bedrock APIs"
   text: "Wiki and Resources"
   tagline: It's never too late to start scripting Minecraft!
+  image:
   actions:
     - theme: brand
       text: Start Guide
@@ -29,3 +30,5 @@ features:
 
 # Your are welcome
 Here is something you may look for
+
+![My Image](./images/hello-world.png)
