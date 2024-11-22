@@ -31,4 +31,4 @@ features:
 # Your are welcome
 Here is something you may look for
 
-![My Image](./images/hello-world.png)
+![My Image](/images/hello-world.png)
