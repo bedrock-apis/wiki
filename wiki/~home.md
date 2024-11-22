@@ -1,1 +1,0 @@
-# Bedrock Scripting Wiki

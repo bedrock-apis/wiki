@@ -5,9 +5,12 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-
+bin/
+.vitepress/cache
+./.vitepress/dist
 # testing
 /coverage
+/.vitepress/dist
 /dist
 # next.js
 /.next/
