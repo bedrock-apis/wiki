@@ -11,8 +11,9 @@
     "docs:preview": "vitepress preview ."
   },
   "devDependencies": {
-    "vitepress": "^1.5.0",
-    "vue": "3.2.44"
+    "@types/node": "^22.13.1",
+    "rolldown": "1.0.0-beta.3",
+    "vitepress": "^1.6.3"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -20,5 +21,6 @@
         "@algolia/client-search"
       ]
     }
-  }
+  },
+  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001"
 }

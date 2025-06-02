@@ -155,11 +155,14 @@ img {
 
 :root {
   --vp-c-bg: #F0F0FF;
+  --vp-c-gray-3: #c1c6cc;
   --vp-c-bg-alt: #FBF8F9;
   --vp-c-bg-elv: #ffffFF;
   --vp-c-bg-soft: #FFFFFF;
+  
 }
 .dark {
+  --vp-c-gray-3: #4a4c50;
   --vp-c-bg: #10101b;
   --vp-c-bg-alt: #16161f;
   --vp-c-bg-elv: #202128;
@@ -235,4 +238,18 @@ img {
   --vp-c-caution-2: var(--vp-c-red-2);
   --vp-c-caution-3: var(--vp-c-red-3);
   --vp-c-caution-soft: var(--vp-c-red-soft);
+}
+
+
+
+table {
+  width: fit-content;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  border-color: #888;
+  box-shadow: 0.1rem 0.1rem 0.4rem #0005;
+}
+
+td, th {
+  background-color: transparent;
 }

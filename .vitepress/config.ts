@@ -16,16 +16,17 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'About', link: '/markdown-examples' }
     ],
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
+    sidebar: {
+      '/guide/':[
+        {
+          text: 'Examples',
+          items: [
+            { text: 'Markdown Examples', link: '/guide/markdown-examples' },
+            { text: 'Runtime API Examples', link: '/api-examples' }
+          ]
+        }
+      ],
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/bedrock-apis' },
       { icon: 'discord', link: 'https://discord.gg/38M6A2RvKk' }

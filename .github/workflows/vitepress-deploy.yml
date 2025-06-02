@@ -26,7 +26,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-          cache: npm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10  # Specify the version of pnpm you want to install
+      - name: Install dependencies
+        run: pnpm install
       - uses: actions/configure-pages@v1
       - run: npm ci && npm run docs:build
       - uses: actions/upload-pages-artifact@v1
